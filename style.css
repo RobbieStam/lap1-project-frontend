@@ -1,4 +1,73 @@
-h1 {
-    color: red;
+* {
+    padding: 0px;
+    margin: 0px;
 }
+
+body {
+    background-image: url("https://fs.hubspotusercontent00.net/hubfs/6576206/GIS-Blog-Header.jpg");
+    background-size: auto;
+    color: whitesmoke;
+}
+
+#title-btn {
+    margin-right: 500px;
+    padding: 20px;
+    margin: 0px 500px 0px 0px;
+    border: 0px;
+    font-size: 20px;
+    background: color #0d2818;
+}
+
+#score-bar {
+    background-color: #058C42;
+    margin: 100px 400px 20px 400px;
+    text-align: center;
+    padding: 8px;
+    border: 3px solid #0d2818;
+    font-size: 12px;
+    border-radius: 15px;
+}
+
+#nav-bar {
+    margin: 0px;
+    padding: 0px;
+    background-color: #058C42;
+    text-align: left;
+    border-bottom: 3px solid #0d2818;
+}
+
+#question {
+    background-color:#058C42 ;
+    margin: 20px 300px 20px 300px;
+    font-size: 40px;
+    text-align: center;
+    padding: 30px;
+    border: 3px solid #0d2818;
+    border-radius: 15px;
+}
+
+#country-guess {
+    text-align: center;
+    padding: 20px;
+}
+
+.form-text {
+    padding: 15px;
+}
+
+
+
+.btn {
+    background-color: #0d2818;
+    color: whitesmoke;
+}
+
+.nav-btn {
+    padding: 10px 15px 10px 15px;
+    margin: 0px 20px 0px 20px;
+    text-align: right;
+}
+
+
+
 

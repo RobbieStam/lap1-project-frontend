@@ -1,3 +1,7 @@
-const header = document.querySelector("#head")
+const score = document.querySelector("#score")
 
-header.textContent = "Hello WORLDY"
+const randomScore = () => Math.floor(Math.random() *100);
+
+score.textContent = `Score: ${randomScore()}`
+
+

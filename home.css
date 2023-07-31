@@ -11,15 +11,14 @@ body {
     font-family: 'Crete Round', serif;
     font-family: 'Rowdies', cursive;;
     font-size: xx-large;
+    background-image: url("https://fs.hubspotusercontent00.net/hubfs/6576206/GIS-Blog-Header.jpg");
 }
 
 .container {
-    background-color: pink;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 10px;
     place-items: center;
-    background-image: url("https://fs.hubspotusercontent00.net/hubfs/6576206/GIS-Blog-Header.jpg");
 }
 
 /* nav {

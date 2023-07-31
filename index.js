@@ -4,6 +4,10 @@ let currentCapital;
 let score = 0;
 const scoreText = document.querySelector("#score");
 
+function displayScore() {
+  scoreText.textContent = `Score: ${score}`
+}
+
 function getRandomCountry(countries) {
   const max = countries.length;
   const randIdx = Math.floor(Math.random() * max);
@@ -42,10 +46,6 @@ function checkAnswer(e) {
 
 const form = document.querySelector('#country-guess');
 form.addEventListener('submit', checkAnswer);
-
-function displayScore() {
-  scoreText.textContent = `Score: ${score}`
-}
 
 displayScore();
 displayCountry();

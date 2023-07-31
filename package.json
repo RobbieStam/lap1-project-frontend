@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "npm run concurrently --watchify --live-server",
+    "dev": "concurrently \"watchify index.js -o bundle.js --debug\" \"live-server\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

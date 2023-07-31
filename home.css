@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Crete+Round&family=Rowdies:wght@300&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: green;
+    font-family: 'Crete Round', serif;
+    font-family: 'Rowdies', cursive;;
+    font-size: xx-large;
+}
+
+.container {
+    background-color: pink;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    place-items: center;
+    background-image: url("https://fs.hubspotusercontent00.net/hubfs/6576206/GIS-Blog-Header.jpg");
+}
+
+nav {
+    background-color: green;
+    grid-column: 1/5;
+    height: 5vh; 
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+button {
+    background-color: green;
+    margin: 5px;
+    padding: 10px;
+    width: 100px;
+}
+
+h1, h2 {
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    height: 50vh;
+    width: 80vw;
+}
+
+h2 {
+    height: 30vh;
+    width: 40vw;
+}
+
+.app_name_box {
+    background-color: green;
+    grid-column: 1/5;
+    height: 50vh;
+    width: 80vw;
+    margin: 40px 80px 20px 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 10px 5px rgba(190, 240, 194, 0.25);
+}
+
+.game_box {
+    background-color: green;
+    grid-column: 1/3;
+    height: 30vh;
+    width: 40vw;
+    margin: 10px 20px 40px 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 10px 5px rgba(190, 240, 194, 0.25);
+}
+
+.train_box {
+    background-color: green;
+    grid-column: 3/5;
+    height: 30vh;
+    width: 40vw;
+    margin: 10px 80px 40px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 10px 5px rgba(190, 240, 194, 0.25);
+}
+
+@media only screen and (max-width: 1100px) {}

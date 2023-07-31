@@ -19,26 +19,18 @@ body {
 }
 
 #score-bar {
-    background-color: #058C42;
-    margin: 100px 400px 20px 400px;
+    background-color: #16db65;
+    margin: 10vh 35vw;
     text-align: center;
     padding: 8px;
     border: 3px solid #0d2818;
-    font-size: 12px;
+    font-size: 10px;
     border-radius: 15px;
 }
 
-#nav-bar {
-    margin: 0px;
-    padding: 0px;
-    background-color: #058C42;
-    text-align: left;
-    border-bottom: 3px solid #0d2818;
-}
-
 #question {
-    background-color:#058C42 ;
-    margin: 20px 300px 20px 300px;
+    background-color:#16db65;
+    margin: 10vh 30vw;
     font-size: 40px;
     text-align: center;
     padding: 30px;
@@ -48,25 +40,14 @@ body {
 
 #country-guess {
     text-align: center;
-    padding: 20px;
+    margin: 10vh 30vw;
 }
 
 .form-text {
     padding: 15px;
 }
 
-
-
-.btn {
-    background-color: #0d2818;
-    color: whitesmoke;
-}
-
-.nav-btn {
-    padding: 10px 15px 10px 15px;
-    margin: 0px 20px 0px 20px;
-    text-align: right;
-}
+@media only screen and (max-width: 1100px) {}
 
 
 

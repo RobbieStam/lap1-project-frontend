@@ -21,7 +21,7 @@ function fetchCountry(data) {
   const textElement = document.querySelector("#question");
   textElement.textContent = country['name'];
 
-  currentCapital = country['capital'].toLowerCase();
+  currentCapital = country['capital'];
   console.log(currentCapital);
 }
 
@@ -31,10 +31,14 @@ function displayCountry() {
   .then(fetchCountry);
 }
 
+function displayCorrectAnswer() {
+  
+}
+
 function checkAnswer(e) {
   e.preventDefault();
-  const input = e.target.answer.value.toLowerCase();
-  if (input === currentCapital) {
+  const input = e.target.answer.value;
+  if (input.toLowerCase() === currentCapital.toLowerCase()) {
     score++;
     console.log(score)
     console.log("correct")

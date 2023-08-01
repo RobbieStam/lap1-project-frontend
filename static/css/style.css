@@ -1,0 +1,134 @@
+@media only screen and (max-width: 1100px) {}
+@import url('https://fonts.googleapis.com/css2?family=Crete+Round&family=Rowdies:wght@300&display=swap');
+
+
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+body {
+    background-image: url("https://fs.hubspotusercontent00.net/hubfs/6576206/GIS-Blog-Header.jpg");
+    background-size: auto;
+    color: whitesmoke;
+    background-color: green;
+    font-family: 'Crete Round', serif;
+    font-family: 'Rowdies', cursive;;
+    font-size: xx-large;
+}
+
+#score-bar {
+    background-color: #16db65;
+    margin: 10vh 35vw;
+    text-align: center;
+    padding: 8px;
+    border: 3px solid #0d2818;
+    font-size: 10px;
+    border-radius: 15px;
+}
+
+#question {
+    background-color:#16db65;
+    margin: 10vh 30vw;
+    font-size: 40px;
+    text-align: center;
+    padding: 30px;
+    border: 3px solid #0d2818;
+    border-radius: 15px;
+}
+
+#country-guess {
+    text-align: center;
+    margin: 10vh 30vw;
+}
+
+.form-text {
+    padding: 15px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.mycontainer {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    place-items: center;
+}
+
+button {
+    background-color: green;
+    margin: 5px;
+    padding: 10px;
+    width: 100px;
+}
+
+.home-header {
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#app-name {
+    height: 50vh;
+    width: 80vw;
+}
+
+.game-train {
+    height: 30vh;
+    width: 40vw;
+}
+
+.app_name_box {
+    background-color: #16db65;
+    grid-column: 1/5;
+    height: 50vh;
+    width: 80vw;
+    margin: 40px 80px 20px 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 10px 5px rgba(190, 240, 194, 0.25);
+    border: 3px solid #0d2818;
+    border-radius: 15px;
+
+}
+
+.game_box {
+    background-color: #16db65;
+    grid-column: 1/3;
+    height: 30vh;
+    width: 40vw;
+    margin: 10px 20px 40px 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 10px 5px rgba(190, 240, 194, 0.25);
+    border: 3px solid #0d2818;
+    border-radius: 15px;
+
+}
+
+.train_box {
+    background-color: #16db65;
+    grid-column: 3/5;
+    height: 30vh;
+    width: 40vw;
+    margin: 10px 80px 40px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 10px 5px rgba(190, 240, 194, 0.25);
+    border: 3px solid #0d2818;
+    border-radius: 15px;
+}
+
+@media only screen and (max-width: 1100px) {}
+
+
+
+

@@ -4,7 +4,7 @@
   "description": "",
   "main": "./static/js/index.js",
   "scripts": {
-    "build": "npm run build -config ./package.json",
+    "build": "npm run build -config ./home.html",
     "dev": "concurrently \"watchify static/js/index.js -o bundle.js --debug\" \"live-server\"",
     "start": "watchify index.js -o bundle.js",
     "test": "echo \"Error: no test specified\" && exit 1"

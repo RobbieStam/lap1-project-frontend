@@ -7,14 +7,27 @@
     margin: 0px;
 }
 
+.nav-link {
+    color: white;
+}
+
+.nav-link:hover {
+    color: rgb(58, 197, 202);
+}
+
 body {
     background-image: url("https://fs.hubspotusercontent00.net/hubfs/6576206/GIS-Blog-Header.jpg");
     background-size: auto;
     color: whitesmoke;
-    background-color: green;
-    font-family: 'Crete Round', serif;
-    font-family: 'Rowdies', cursive;;
-    font-size: xx-large;
+    font-size: x-large;
+}
+
+.titleStrip {
+    margin: vw 100;
+    padding: 20px;
+    font-size: 38px;
+    text-align: center;
+    background-image: url("https://colorswall.com/images/palettes/shades-of-cadet-blue-5f9ea0-hex-color-24223-colorswall.png");
 }
 
 #score-bar {
@@ -43,13 +56,7 @@ body {
 }
 
 .form-text {
-    padding: 15px;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    padding: 5px;
 }
 
 .mycontainer {
@@ -59,15 +66,7 @@ body {
     place-items: center;
 }
 
-button {
-    background-color: green;
-    margin: 5px;
-    padding: 10px;
-    width: 100px;
-}
-
 .home-header {
-    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -83,52 +82,106 @@ button {
     width: 40vw;
 }
 
-.app_name_box {
-    background-color: #16db65;
-    grid-column: 1/5;
-    height: 50vh;
-    width: 80vw;
-    margin: 40px 80px 20px 80px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 0 10px 5px rgba(190, 240, 194, 0.25);
-    border: 3px solid #0d2818;
-    border-radius: 15px;
+.carousel-item img{
+    height: 400px;
+    max-height: 400px;
+    margin: auto; 
+    margin-top: 30px;
+    display: block;
+    border: 3px solid #395f60;;
+    }
 
-}
+    .carousel-control-next-icon,
+    .carousel-control-prev-icon {
+      width: 3vw;
+      height: 3vw;
+    }
 
-.game_box {
-    background-color: #16db65;
-    grid-column: 1/3;
-    height: 30vh;
-    width: 40vw;
-    margin: 10px 20px 40px 80px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 0 10px 5px rgba(190, 240, 194, 0.25);
-    border: 3px solid #0d2818;
-    border-radius: 15px;
+    h5 {
+        font-size: xx-large;
+        background-color: cadetblue;
+        padding: 20px;
+        margin: 4% 37%;
+        border: 3px solid #395f60;
+    }
 
-}
+    .playNowBtn {
+        background-color: whitesmoke;
+        padding: 10px;
+        margin: 20px
+    }
 
-.train_box {
-    background-color: #16db65;
-    grid-column: 3/5;
-    height: 30vh;
-    width: 40vw;
-    margin: 10px 80px 40px 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 0 10px 5px rgba(190, 240, 194, 0.25);
-    border: 3px solid #0d2818;
-    border-radius: 15px;
-}
+    button:hover {
+        font-size: xx-large;
+    }
 
-@media only screen and (max-width: 1100px) {}
-
-
-
+    @@ -13,7 +13,7 @@ body {
+        color: whitesmoke;
+        background-color: green;
+        font-family: 'Crete Round', serif;
+        font-family: 'Rowdies', cursive;;
+        font-family: 'Rowdies', cursive;
+        font-size: xx-large;
+    }
+    
+    @@ -130,5 +130,59 @@ button {
+    @media only screen and (max-width: 1100px) {}
+    }
+    
+    .acontainer {
+        margin: 10px;
+        width: 500px;
+        height: 300px;
+        display: flex;
+        justify-content: center;   
+        align-items: center;
+        position: absolute;
+        top: 300px;
+        left: 700px;
+    }
+    
+    .acontainer:hover> .acard {
+        cursor: pointer;
+        transform: rotateY(180deg);
+        perspective: 800px;
+    } 
+    
+    .acard {
+        width: 500px;
+        height: 300px;
+        position: relative;
+        transition: transform 1800ms;
+        transform-style: preserve-3d;
+        background-color: #16db65;
+        border-radius: 2rem;
+        font-family: 'Rowdies', cursive;
+    
+    }
+    
+    .front,
+    .back {
+        height: 100%;
+        width: 100%;
+        border-radius: 2rem;
+        box-shadow: 0 0 5px 2px rgba(50, 50, 50, 0.25);
+        position: absolute;
+        backface-visibility: hidden;
+        font-size: 40px;
+        padding: 30px;
+    }
+    
+    .front {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    } 
+    
+    .back {
+        background-color: #3a3a3a;
+        transform: rotateY(180deg);
+        color: azure;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 

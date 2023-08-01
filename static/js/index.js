@@ -21,7 +21,7 @@ function fetchCountry(data) {
   const textElement = document.querySelector("#question");
   textElement.textContent = country['name'];
 
-  currentCapital = country['capital'];
+  currentCapital = country['capital'].toLowerCase();
   console.log(currentCapital);
 }
 
@@ -33,7 +33,7 @@ function displayCountry() {
 
 function checkAnswer(e) {
   e.preventDefault();
-  const input = e.target.answer.value;
+  const input = e.target.answer.value.toLowerCase();
   if (input === currentCapital) {
     score++;
     console.log(score)

@@ -1,0 +1,64 @@
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 40px;
+}
+
+h2 {
+    font-size: 30px;
+    margin-bottom: 0px;
+}
+
+h6 {
+    font-family: Ysabeau SC;
+    font-size: 50px;
+    border-bottom: 3px solid #001318;
+}
+
+#flag {
+    position: relative;
+    height: 200px;
+    width: auto;
+    margin: 30px;
+
+}
+
+#timer {
+    background-color: #395f60;
+    border: 2px solid #668080;
+    margin: 1vh 10vw;
+    text-align: center;
+    padding: 8px;
+    font-size: 20px;
+    border-radius: 5px;
+}
+
+.quizContainer {
+    padding: 20px;
+    background-color: #395f60;
+    border: 2px solid #668080;
+    border-radius: 5px;
+    text-align: center;
+    justify-content: center;
+    margin: 20px;
+
+}
+
+#score {
+    font-size: 25px;
+    margin-top: 0px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+}
+
+.question {
+    margin-bottom: 0px;
+    font-size: 40px;
+    padding: 15px;
+}
+
+.form-text {
+    padding: 5px;
+}

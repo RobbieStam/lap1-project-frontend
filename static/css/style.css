@@ -1,272 +1,39 @@
 @media only screen and (max-width: 1100px) {}
 @import url('https://fonts.googleapis.com/css2?family=Crete+Round&family=Rowdies:wght@300&display=swap');
 
-
 * {
     padding: 0px;
     margin: 0px;
+    box-sizing: border-box;
 }
 
 body {
     background-image: url("https://fs.hubspotusercontent00.net/hubfs/6576206/GIS-Blog-Header.jpg");
     background-size: auto;
     color: whitesmoke;
-    background-color: green;
-    font-family: 'Crete Round', serif;
-    font-family: 'Rowdies', cursive;
-    font-size: xx-large;
+    font-size: x-large;
 }
 
-#timer {
-    background-color: #16db65;
-    margin: 10vh 35vw;
+.titleStrip {
+    margin: vw 100;
+    padding: 0px;
+    font-size: 45px;
+    font-family: Ysabeau SC;
     text-align: center;
-    padding: 8px;
-    border: 3px solid #0d2818;
-    font-size: 15px;
-    border-radius: 15px;
+    background-image: url("https://colorswall.com/images/palettes/shades-of-cadet-blue-5f9ea0-hex-color-24223-colorswall.png");
+    background-position: 9%;
+    border-bottom: 3px solid #395f60;
 }
 
-#score-bar {
-    background-color: #16db65;
-    margin: 10vh 35vw;
-    text-align: center;
-    padding: 8px;
-    border: 3px solid #0d2818;
-    font-size: 10px;
-    border-radius: 15px;
-}
-
-#question {
-    background-color:#16db65;
-    margin: 10vh 30vw;
-    font-size: 40px;
-    text-align: center;
-    padding: 30px;
-    border: 3px solid #0d2818;
-    border-radius: 15px;
-}
-
-#country-guess {
-    text-align: center;
-    margin: 10vh 30vw;
-}
-
-.form-text {
-    padding: 15px;
-}
-
-#response {
-    background-color: #16db65;
-    margin: 10vh 35vw;
-    text-align: center;
-    padding: 8px;
-    border: 3px solid #0d2818;
-    font-size: 15px;
-    border-radius: 15px;
-    visibility: hidden;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-.mycontainer {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-    place-items: center;
+#training-refresh {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 button {
-    background-color: green;
-    margin: 5px;
-    padding: 10px;
-    width: 100px;
+        background-color: whitesmoke;
+        width: 27vh;
+        padding: 20px;
 }
-
-.home-header {
-    
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#app-name {
-    height: 50vh;
-    width: 80vw;
-}
-
-.game-train {
-    height: 30vh;
-    width: 40vw;
-}
-
-.app_name_box {
-    background-color: #16db65;
-    grid-column: 1/5;
-    height: 50vh;
-    width: 80vw;
-    margin: 40px 80px 20px 80px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 0 10px 5px rgba(190, 240, 194, 0.25);
-    border: 3px solid #0d2818;
-    border-radius: 15px;
-
-}
-
-.game_box {
-    background-color: #16db65;
-    grid-column: 1/3;
-    height: 30vh;
-    width: 40vw;
-    margin: 10px 20px 40px 80px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 0 10px 5px rgba(190, 240, 194, 0.25);
-    border: 3px solid #0d2818;
-    border-radius: 15px;
-
-}
-
-.train_box {
-    background-color: #16db65;
-    grid-column: 3/5;
-    height: 30vh;
-    width: 40vw;
-    margin: 10px 80px 40px 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 0 10px 5px rgba(190, 240, 194, 0.25);
-    border: 3px solid #0d2818;
-    border-radius: 15px;
-}
-
-@media only screen and (max-width: 1100px) {}
-
-/*Cards*/
-.cardcontainer, 
-.cardcontainer2, 
-.cardcontainer3 {
-    width: 15vw;
-    height: 25vh;
-    position: absolute;
-    top: 40vh;
-    left: 15vw;
-    display: block;
-    cursor: pointer;
-    perspective: 2000px;
-    transform-style: preserve-3d;
-    border-radius: 15px;
-}
-
-.cards, 
-.cards2, 
-.cards3 {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transform-style: preserve-3d;
-    transition: all 1500ms;
-}
-
-.front, .back, 
-.front2, .back2,
-.front3, .back3 {
-    position: absolute;
-    backface-visibility: hidden;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 3px solid #0d2818;
-    border-radius: 15px;
-    font-size: 150%;
-    padding: 30px;
-}
-
-.front,
-.front2, 
-.front3 {
-    background-color: #aae2a9;
-}
-
-.back, 
-.back2, 
-.back3{
-    background-color: #444444;
-    color: white;
-    transform: rotateY(180deg);
-}
-
-.cards>.front:hover, 
-.cards2>.front2:hover, 
-.cards3>.front3:hover {
-    box-shadow: 0 10px 30px #9df16c86;
-}
-
-:checked +.cards, 
-:checked +.cards2, 
-:checked +.cards3 {
-    transform: rotateY(180deg);
-}
-
-.cardcontainer>input, 
-.cardcontainer2>input, 
-.cardcontainer3>input {
-    display: none;
-}
-
-.cardcontainer2 {
-    position: absolute;
-    top: 40vh;
-    left: 43vw;
-}
-
-.cardcontainer3 {
-    position: absolute;
-    top: 40vh;
-    left: 70vw; 
-}
-/*End of cards*/
-
-.leaderboard {
-    background-color: white;
-    height: 30vh;
-    width: 30vw;
-    border: 3px solid #0d2818;
-    border-radius: 10px;
-    position: absolute;
-    top:35vh;
-    left: 35vw
-}
-
-/*Leaderboard*/
-.rank {
-    background-color: #aae2a9;
-    border-radius: 10px 10px 0 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.ranking {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    justify-content: center;
-    text-align: center;
-    margin: 10px;
-    font-size: 100%;
-}
-/*End of leaderboard*/

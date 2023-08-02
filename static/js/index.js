@@ -89,16 +89,34 @@ function startTimer() {
   }, 1000)
 }
 
+async function postScore(e) {
+  const name = e.target.name.value;
+  const finalScore = score;
+
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      name: name,
+      score: finalScore
+    })
+  }
+
+  const response = await fetch(`https://capitals-quiz.onrender.com/scores`, options)
+  console.log(response)
+  if (response.status === 201) {
+    console.log(`201 true`)
+  }
+}
+
 const form = document.querySelector('#country-guess');
 form.addEventListener('submit', checkAnswer);
 
-function getName(e) {
-  const name = e.target.name.value;
-}
-
 const dialog = document.getElementById("dialog");
 const dialogEntry = document.getElementById("name");
-dialogEntry.addEventListener("submit", getName);
+dialogEntry.addEventListener("submit", postScore);
 
 // Form cancel button closes the dialog box
 const cancelButton = document.getElementById("cancel");

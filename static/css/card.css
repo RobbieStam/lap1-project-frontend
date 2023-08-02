@@ -2,23 +2,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Crete+Round&family=Rowdies:wght@300&display=swap');
 
 /*Cards*/
-.cardcontainer, 
-.cardcontainer2, 
+#train-container {
+    height: 65vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+}
+.cardcontainer,
+.cardcontainer2,
 .cardcontainer3 {
-    width: 15vw;
-    height: 25vh;
-    position: absolute;
-    top: 40vh;
-    left: 15vw;
+    width: 400px;
+    height: 250px;
     display: block;
     cursor: pointer;
     perspective: 2000px;
     transform-style: preserve-3d;
     border-radius: 15px;
 }
-
-.cards, 
-.cards2, 
+.cards,
+.cards2,
 .cards3 {
     position: relative;
     width: 100%;
@@ -29,8 +33,7 @@
     transform-style: preserve-3d;
     transition: all 1500ms;
 }
-
-.front, .back, 
+.front, .back,
 .front2, .back2,
 .front3, .back3 {
     position: absolute;
@@ -40,54 +43,37 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 3px solid #0d2818;
+    border: 3px solid #0D2818;
     border-radius: 15px;
     font-size: 150%;
     padding: 30px;
 }
-
 .front,
-.front2, 
+.front2,
 .front3 {
-    background-color: #aae2a9;
+    background-color: #AAE2A9;
 }
-
-.back, 
-.back2, 
+.back,
+.back2,
 .back3{
     background-color: #444444;
     color: white;
     transform: rotateY(180deg);
 }
-
-.cards>.front:hover, 
-.cards2>.front2:hover, 
+.cards>.front:hover,
+.cards2>.front2:hover,
 .cards3>.front3:hover {
     box-shadow: 0 10px 30px #9df16c86;
 }
-
-:checked +.cards, 
-:checked +.cards2, 
+:checked +.cards,
+:checked +.cards2,
 :checked +.cards3 {
     transform: rotateY(180deg);
 }
-
-.cardcontainer>input, 
-.cardcontainer2>input, 
+.cardcontainer>input,
+.cardcontainer2>input,
 .cardcontainer3>input {
     display: none;
-}
-
-.cardcontainer2 {
-    position: absolute;
-    top: 40vh;
-    left: 43vw;
-}
-
-.cardcontainer3 {
-    position: absolute;
-    top: 40vh;
-    left: 70vw; 
 }
 /*End of cards*/
 

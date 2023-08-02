@@ -82,6 +82,8 @@ function startTimer() {
     if (--timer < 0) {
       timer = 0;
       console.log("timeout");
+      // Get name and score
+      dialog.showModal();
       clearInterval(changeTimer);
     }
   }, 1000)
@@ -89,6 +91,18 @@ function startTimer() {
 
 const form = document.querySelector('#country-guess');
 form.addEventListener('submit', checkAnswer);
+
+function getName(e) {
+  const name = e.target.name.value;
+}
+
+const dialog = document.getElementById("dialog");
+const dialogEntry = document.getElementById("name");
+dialogEntry.addEventListener("submit", getName);
+
+// Form cancel button closes the dialog box
+const cancelButton = document.getElementById("cancel");
+cancelButton.addEventListener("click", () => dialog.close("nameNotGiven"));
 
 startTimer();
 displayScore();

@@ -1,4 +1,4 @@
-const url = "https://capitals-quiz.onrender.com/countries";
+const url = "https://capitals-quiz.onrender.com/countries/random";
 
 let currentCapital, currentCountry;
 let score = 0;
@@ -8,15 +8,15 @@ function displayScore() {
   scoreText.textContent = `Score: ${score}`
 }
 
-function getRandomCountry(countries) {
-  const max = countries.length;
-  const randIdx = Math.floor(Math.random() * max);
-  return countries[randIdx];
-}
+// function getRandomCountry(countries) {
+//   const max = countries.length;
+//   const randIdx = Math.floor(Math.random() * max);
+//   return countries[randIdx];
+// }
 
 function fetchCountry(data) {
 
-  const country = getRandomCountry(data);
+  const country = data;
 
   const textElement = document.querySelector("#question");
   textElement.textContent = country['name'];
@@ -34,12 +34,13 @@ function displayCountry() {
 
 function displayAnswerMessage(isCorrect) {
   const answerMessage = document.querySelector('#response');
+  answerMessage.style.visibility = 'visible';
   if (isCorrect) {
     answerMessage.textContent = `Correct answer!`;
-    answerMessage.style.color="blue";
+    answerMessage.style.color = 'blue';
   } else {
     answerMessage.textContent = `Incorrect, ${currentCapital} is the capital of ${currentCountry}`;
-    answerMessage.style.color="firebrick";
+    answerMessage.style.color = 'firebrick';
   }
 }
 
@@ -57,8 +58,36 @@ function checkAnswer(e) {
   displayCountry();
 }
 
+function displayTimer(timer, timerElement) {
+  let minutes = Math.floor(timer / 60);
+  let seconds = Math.floor(timer % 60); //can maybe remove 10?
+
+  if (seconds < 10) {
+    seconds = `0${seconds}`;
+  }
+
+  timerElement.textContent= `${minutes}:${seconds}`;
+}
+
+function startTimer() {
+  const timerElement = document.querySelector('#timer');
+  let timer = 10; // set duration
+
+  displayTimer(timer, timerElement); // initialise display
+  
+  // countdown
+  setInterval(function () {
+    displayTimer(timer, timerElement);
+
+    if (--timer < 0) {
+      timer = 0;
+    }
+  }, 1000)
+}
+
 const form = document.querySelector('#country-guess');
 form.addEventListener('submit', checkAnswer);
 
+startTimer();
 displayScore();
 displayCountry();

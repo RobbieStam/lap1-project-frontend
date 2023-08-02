@@ -1,4 +1,4 @@
-const url = "https://staging-countries.onrender.com/countries";
+const url = "https://staging-countries.onrender.com/countries/random";
 
 let currentCapital;
 let score = 0;
@@ -8,21 +8,21 @@ function displayScore() {
   scoreText.textContent = `Score: ${score}`
 }
 
-function getRandomCountry(countries) {
-  const max = countries.length;
-  const randIdx = Math.floor(Math.random() * max);
-  return countries[randIdx];
-}
+// function getRandomCountry(countries) {
+//   const max = countries.length;
+//   const randIdx = Math.floor(Math.random() * max);
+//   return countries[randIdx];
+// }
 
 function fetchCountry(data) {
 
-  const country = getRandomCountry(data);
-  const countryName = country['name']
+  const country = data;
 
   const textElement = document.querySelector("#question");
-  textElement.textContent = `What is the capital of ${countryName}?`;
+  textElement.textContent = country['name'];
 
   currentCapital = country['capital'];
+  currentCountry = country['name'];
   console.log(currentCapital);
 }
 
@@ -32,21 +32,31 @@ function displayCountry() {
   .then(fetchCountry);
 }
 
+function displayAnswerMessage(isCorrect) {
+  const answerMessage = document.querySelector('#response');
+  answerMessage.style.visibility = 'visible';
+  if (isCorrect) {
+    answerMessage.textContent = `Correct answer!`;
+    answerMessage.style.color = 'blue';
+  } else {
+    answerMessage.textContent = `Incorrect, ${currentCapital} is the capital of ${currentCountry}`;
+    answerMessage.style.color = 'firebrick';
+  }
+}
+
 function checkAnswer(e) {
   e.preventDefault();
   const input = e.target.answer.value;
-  if (input === currentCapital) {
+  if (input.toLowerCase() === currentCapital.toLowerCase()) {
     score++;
-    console.log(score)
-    console.log("correct")
+    displayAnswerMessage(true);
+  } else {
+    displayAnswerMessage(false);
   }
   e.target.answer.value = '';
   displayScore();
   displayCountry();
 }
-
-const form = document.querySelector('#country-guess');
-form.addEventListener('submit', checkAnswer);
 
 function displayTimer(timer, timerElement) {
   let minutes = Math.floor(timer / 60);
@@ -61,19 +71,55 @@ function displayTimer(timer, timerElement) {
 
 function startTimer() {
   const timerElement = document.querySelector('#timer');
-  let timer = 90; // set duration
+  let timer = 5; // set duration
 
   displayTimer(timer, timerElement); // initialise display
   
   // countdown
-  setInterval(function () {
+  var changeTimer = setInterval(function () {
     displayTimer(timer, timerElement);
 
     if (--timer < 0) {
       timer = 0;
+      // Get name and score
+      dialog.showModal();
+      clearInterval(changeTimer);
     }
   }, 1000)
 }
+
+async function postScore(e) {
+  const name = e.target.name.value;
+  const finalScore = score;
+
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      name: name,
+      score: finalScore
+    })
+  }
+
+  const response = await fetch(`https://staging-countries.onrender.com/scores`, options)
+  console.log(response)
+  if (response.status === 201) {
+    console.log(`201 true`)
+  }
+}
+
+const form = document.querySelector('#country-guess');
+form.addEventListener('submit', checkAnswer);
+
+const dialog = document.getElementById("dialog");
+const dialogEntry = document.getElementById("name");
+dialogEntry.addEventListener("submit", postScore);
+
+// Form cancel button closes the dialog box
+const cancelButton = document.getElementById("cancel");
+cancelButton.addEventListener("click", () => dialog.close("nameNotGiven"));
 
 displayScore();
 displayCountry();

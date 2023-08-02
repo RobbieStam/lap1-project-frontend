@@ -9,7 +9,7 @@
 
 /* Carousel CSS */
 .carousel-control-prev, .carousel-control-next{
-    margin-top: 320px;
+    margin-top: 280px;
     max-height: 200px;
 }
 
@@ -32,10 +32,10 @@
 
 h5 {
         font-size: xx-large;
-        background-color: cadetblue;
+        background-color: #395f60;
         padding: 20px;
         margin: 4% 37%;
-        border: 3px solid #395f60;
+        border: 3px solid #668080;
 }
 
 .playNowBtn {

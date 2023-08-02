@@ -76,11 +76,13 @@ function startTimer() {
   displayTimer(timer, timerElement); // initialise display
   
   // countdown
-  setInterval(function () {
+  var changeTimer = setInterval(function () {
     displayTimer(timer, timerElement);
 
     if (--timer < 0) {
       timer = 0;
+      console.log("timeout");
+      clearInterval(changeTimer);
     }
   }, 1000)
 }

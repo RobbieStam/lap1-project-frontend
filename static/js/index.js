@@ -1,4 +1,4 @@
-const url = "https://capitals-quiz.onrender.com/countries";
+const url = "https://capitals-quiz.onrender.com/countries/random";
 
 let currentCapital, currentCountry;
 let score = 0;
@@ -8,15 +8,15 @@ function displayScore() {
   scoreText.textContent = `Score: ${score}`
 }
 
-function getRandomCountry(countries) {
-  const max = countries.length;
-  const randIdx = Math.floor(Math.random() * max);
-  return countries[randIdx];
-}
+// function getRandomCountry(countries) {
+//   const max = countries.length;
+//   const randIdx = Math.floor(Math.random() * max);
+//   return countries[randIdx];
+// }
 
 function fetchCountry(data) {
 
-  const country = getRandomCountry(data);
+  const country = data;
 
   const textElement = document.querySelector("#question");
   textElement.textContent = country['name'];
@@ -34,12 +34,13 @@ function displayCountry() {
 
 function displayAnswerMessage(isCorrect) {
   const answerMessage = document.querySelector('#response');
+  answerMessage.style.visibility = 'visible';
   if (isCorrect) {
     answerMessage.textContent = `Correct answer!`;
-    answerMessage.style.color="blue";
+    answerMessage.style.color = 'blue';
   } else {
     answerMessage.textContent = `Incorrect, ${currentCapital} is the capital of ${currentCountry}`;
-    answerMessage.style.color="firebrick";
+    answerMessage.style.color = 'firebrick';
   }
 }
 

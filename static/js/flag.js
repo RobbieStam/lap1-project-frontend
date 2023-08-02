@@ -1,7 +1,8 @@
 const flagIMG = document.getElementById("flag");
 const scoreText = document.querySelector("#score");
 let score = 0,
-currentCountry;
+currentCountry,
+sharedFlags = ["Bonaire, Sint Eustatius and Saba", "Bouvet Island", "United States Minor Outlying Islands", "Saint Martin (French part)", "Svalbard and Jan Mayen"];
 
 async function getFlag() {
     try {
@@ -59,6 +60,14 @@ function startTimer() {
 }
 const form = document.querySelector('#flag-guess');
 form.addEventListener('submit', checkAnswer);
+
+function checkShared() {
+  for(let i = 0; i < sharedFlags.length; i_++) {
+    if(currentCountry === sharedFlags[i]) {
+      // Code in here to allow for the Flag to be Sovereign Country name
+    }
+  }
+}
 
 getFlag();
 displayScore();

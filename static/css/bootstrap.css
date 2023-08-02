@@ -1,2 +1,50 @@
+/* Navbar CSS */
+.nav-link {
+    color: white;
+}
 
+.nav-link:hover {
+    color: rgb(58, 197, 202);
+}
+
+/* Carousel CSS */
+.carousel-control-prev, .carousel-control-next{
+    margin-top: 320px;
+    max-height: 200px;
+}
+
+.carousel-control-next {
+    margin-right: 250px;
+}
+
+.carousel-control-prev {
+    margin-left: 250px;
+}
+
+.carousel-item img{
+    height: 450px;
+    max-height: 400px;
+    margin: auto; 
+    margin-top: 60px;
+    display: block;
+    border: 3px solid #395f60;;
+}
+
+h5 {
+        font-size: xx-large;
+        background-color: cadetblue;
+        padding: 20px;
+        margin: 4% 37%;
+        border: 3px solid #395f60;
+}
+
+.playNowBtn {
+        background-color: whitesmoke;
+        padding: 10px;
+        margin: 20px
+}
+
+button:hover {
+        font-size: 25px;
+}
 

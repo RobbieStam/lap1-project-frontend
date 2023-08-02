@@ -17,9 +17,10 @@ function getRandomCountry(countries) {
 function fetchCountry(data) {
 
   const country = getRandomCountry(data);
+  const countryName = country['name']
 
   const textElement = document.querySelector("#question");
-  textElement.textContent = country['name'];
+  textElement.textContent = `What is the capital of ${countryName}?`;
 
   currentCapital = country['capital'];
   console.log(currentCapital);

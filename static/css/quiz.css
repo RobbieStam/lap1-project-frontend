@@ -6,10 +6,25 @@ main {
     margin: 40px;
 }
 
+h2 {
+    font-size: 20px;
+    margin-bottom: 0px;
+}
+
 h6 {
     font-family: Ysabeau SC;
     font-size: 40px;
     border-bottom: 3px solid #001318;
+}
+
+#timer {
+    background-color: #395f60;
+    border: 2px solid #668080;
+    margin: 1vh 10vw;
+    text-align: center;
+    padding: 8px;
+    font-size: 20px;
+    border-radius: 5px;
 }
 
 .quizContainer {

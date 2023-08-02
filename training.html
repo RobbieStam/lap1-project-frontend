@@ -6,6 +6,7 @@
     <script defer src="./static/js/index.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Ysabeau+SC:wght@600&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script defer src="./static/js/training.js"></script>
     <link rel="stylesheet" href="./static/css/style.css">
     <link rel="stylesheet" href="./static/css/bootstrap.css">
     <link rel="stylesheet" href="./static/css/card.css">
@@ -13,49 +14,57 @@
     <title>Geo Quiz</title>
 </head>
 
-
-    <body>
+<body>
 <!-- HEADER START -->
         <header class="titleStrip">GEO QUIZ</header>
 <!-- HEADER END -->
 
 <!-- NAV START -->
-        <nav>
+  <nav>
             <ul class="nav nav-tabs">
                 <li class="nav-item">
                   <a class="nav-link" aria-current="page" href="./index.html">Home</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link active" href="./capitals.html">Capitals Quiz</a>
+                  <a class="nav-link" href="./capitals.html">Capitals Quiz</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="#">Flags Quiz</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./training.html">Training</a>
+                    <a class="nav-link active" href="./training.html">Training</a>
                   </li>
                 <li class="nav-item">
                     <a class="nav-link" href="./leaderboard.html">Leaderboard</a>
                   </li>
               </ul>
-        </nav>
-  <!-- NAV END -->
-<main>
-  <h6>Capitals Quiz</h6>
+  </nav>
+<section id="train-container">
+    <label class="cardcontainer">
+        <input type="checkbox">
+        <div class="cards">
+            <div class="front" id="front">England</div>
+            <div class="back" id="back">London</div>
+        </div>
+    </label>
 
-    <div id="question"  class="quizContainer">
-        <p id="random-country"></p>
+    <label class="cardcontainer2">
+      <input type="checkbox">
+      <div class="cards2">
+          <div class="front2" id="front2">France</div>
+          <div class="back2" id="back2">Paris</div>
+      </div>
+     </label>
+
+     <label class="cardcontainer3">
+        <input type="checkbox">
+        <div class="cards3">
+        <div class="front3" id="front3">Germany</div>
+        <div class="back3" id="back3">Berlin</div>
     </div>
-
-    <div id="score-board">
-      <h1 id="score" class="quizContainer"></h1>
-    </div>
-
-    <form id="country-guess">
-        <input type="text" name="answer" placeholder="e.g. London" class="form-text">
-        <input type="submit" value="Submit" class="submit-btn">
-    </form>
-  </main>
+</label> 
+</section>
+   
 
 </body>
 </html>

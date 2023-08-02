@@ -7,13 +7,6 @@
     box-sizing: border-box;
 }
 
-/* .mycontainer {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-    place-items: center;
-} */
-
 body {
     background-image: url("https://fs.hubspotusercontent00.net/hubfs/6576206/GIS-Blog-Header.jpg");
     background-size: auto;

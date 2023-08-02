@@ -7,19 +7,22 @@ main {
 }
 
 h2 {
-    font-size: 20px;
+    font-size: 30px;
     margin-bottom: 0px;
 }
 
 h6 {
     font-family: Ysabeau SC;
-    font-size: 40px;
+    font-size: 50px;
     border-bottom: 3px solid #001318;
 }
 
 #flag {
     position: relative;
-    
+    height: 200px;
+    width: auto;
+    margin: 30px;
+
 }
 
 #timer {
@@ -33,7 +36,7 @@ h6 {
 }
 
 .quizContainer {
-    padding: 8px;
+    padding: 20px;
     background-color: #395f60;
     border: 2px solid #668080;
     border-radius: 5px;
@@ -52,7 +55,7 @@ h6 {
 
 .question {
     margin-bottom: 0px;
-    font-size: 35px;
+    font-size: 40px;
     padding: 15px;
 }
 

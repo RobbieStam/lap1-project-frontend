@@ -1,6 +1,7 @@
 /* Navbar CSS */
 .nav-link {
     color: white;
+    margin-bottom: 0px;
 }
 
 .nav-link:hover {

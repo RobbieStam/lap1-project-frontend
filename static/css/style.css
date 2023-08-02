@@ -150,60 +150,123 @@ button {
 
 @media only screen and (max-width: 1100px) {}
 
-
-.acontainer {
-    margin: 10px;
-    width: 500px;
-    height: 300px;
-    display: flex;
-    justify-content: center;   
-    align-items: center;
+/*Cards*/
+.cardcontainer, 
+.cardcontainer2, 
+.cardcontainer3 {
+    width: 15vw;
+    height: 25vh;
     position: absolute;
-    top: 300px;
-    left: 700px;
-}
-
-.acontainer:hover> .acard {
+    top: 40vh;
+    left: 15vw;
+    display: block;
     cursor: pointer;
-    transform: rotateY(180deg);
-    perspective: 800px;
-} 
-
-.acard {
-    width: 500px;
-    height: 300px;
-    position: relative;
-    transition: transform 1800ms;
+    perspective: 2000px;
     transform-style: preserve-3d;
-    background-color: #16db65;
-    border-radius: 2rem;
-    font-family: 'Rowdies', cursive;
-
+    border-radius: 15px;
 }
 
-.front,
-.back {
-    height: 100%;
+.cards, 
+.cards2, 
+.cards3 {
+    position: relative;
     width: 100%;
-    border-radius: 2rem;
-    box-shadow: 0 0 5px 2px rgba(50, 50, 50, 0.25);
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-style: preserve-3d;
+    transition: all 1500ms;
+}
+
+.front, .back, 
+.front2, .back2,
+.front3, .back3 {
     position: absolute;
     backface-visibility: hidden;
-    font-size: 40px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid #0d2818;
+    border-radius: 15px;
+    font-size: 150%;
     padding: 30px;
 }
 
-.front {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-} 
+.front,
+.front2, 
+.front3 {
+    background-color: #aae2a9;
+}
 
-.back {
-    background-color: #3a3a3a;
+.back, 
+.back2, 
+.back3{
+    background-color: #444444;
+    color: white;
     transform: rotateY(180deg);
-    color: azure;
+}
+
+.cards>.front:hover, 
+.cards2>.front2:hover, 
+.cards3>.front3:hover {
+    box-shadow: 0 10px 30px #9df16c86;
+}
+
+:checked +.cards, 
+:checked +.cards2, 
+:checked +.cards3 {
+    transform: rotateY(180deg);
+}
+
+.cardcontainer>input, 
+.cardcontainer2>input, 
+.cardcontainer3>input {
+    display: none;
+}
+
+.cardcontainer2 {
+    position: absolute;
+    top: 40vh;
+    left: 43vw;
+}
+
+.cardcontainer3 {
+    position: absolute;
+    top: 40vh;
+    left: 70vw; 
+}
+/*End of cards*/
+
+.leaderboard {
+    background-color: white;
+    height: 30vh;
+    width: 30vw;
+    border: 3px solid #0d2818;
+    border-radius: 10px;
+    position: absolute;
+    top:35vh;
+    left: 35vw
+}
+
+/*Leaderboard*/
+.rank {
+    background-color: #aae2a9;
+    border-radius: 10px 10px 0 0;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
+.ranking {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    text-align: center;
+    margin: 10px;
+    font-size: 100%;
+}
+/*End of leaderboard*/

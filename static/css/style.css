@@ -43,4 +43,20 @@ body {
 }
 
 
+#training-refresh {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 60vh;
+}
+
+button {
+        background-color: whitesmoke;
+        width: 27vh;
+        padding: 20px;
+}
+
+
+
 

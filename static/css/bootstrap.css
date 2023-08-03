@@ -1,0 +1,63 @@
+/* Navbar CSS */
+.nav-link {
+    color: white;
+    margin-bottom: 0px;
+}
+
+.nav-link:hover {
+    color: rgb(58, 197, 202);
+}
+
+/* Carousel CSS */
+.carousel-control-prev, .carousel-control-next{
+    margin-top: 330px;
+    max-height: 200px;
+}
+
+.carousel-control-next {
+    margin-right: 15vw;
+}
+
+.carousel-control-prev {
+    margin-left: 15vw;
+}
+
+.carousel-control-next-icon, .carousel-control-prev-icon {
+    background-size: 70px;
+}
+
+nav {
+    margin-bottom: 0px;
+}
+
+.carousel-item img{
+    height: 450px;
+    max-height: 700px;
+    margin: auto; 
+    margin-top: 100px;
+    display: block;
+    border: 3px solid #395f60;;
+    max-width: 650px;
+    min-width: 650px;
+}
+
+h5 {
+        font-size: xx-large;
+        background-color: #395f60;
+        padding: 20px;
+        margin: 4% 37%;
+        border: 3px solid #668080;
+}
+
+.playNowBtn {
+    font-size: xx-large;
+    background-color: #395f60;
+    padding: 20px;
+    margin: 3% 10%;
+    border: 3px solid #668080;
+    color: whitesmoke;
+}
+
+.playNowBtn:hover {
+    background-color: #668080;
+}

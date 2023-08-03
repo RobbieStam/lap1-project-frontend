@@ -1,5 +1,6 @@
 const url = "https://capitals-quiz.onrender.com/countries/random";
 
+let alt = [];
 let currentCapital, currentCountry;
 let score = 0;
 const scoreText = document.querySelector("#score");
@@ -19,11 +20,16 @@ function fetchCountry(data) {
   const country = data;
 
   const textElement = document.querySelector("#question");
-  textElement.textContent = country['name'];
+  textElement.textContent = country['capital'];
 
   currentCapital = country['capital'];
   currentCountry = country['name'];
-  console.log(currentCapital);
+  console.log(currentCountry);
+
+  if(data.alt) {
+    alt = data.alt;
+    console.log(alt);
+  }
 }
 
 function displayCountry() {
@@ -44,15 +50,31 @@ function displayAnswerMessage(isCorrect) {
   }
 }
 
+function checkAlt(input) {
+  for (let i = 0; i< alt.length; i++) {
+    if (input === alt[i].toLowerCase()) {
+      score++;
+      displayAnswerMessage(true);
+    } else {
+      displayAnswerMessage(false);
+    }
+  }
+}
+
 function checkAnswer(e) {
   e.preventDefault();
-  const input = e.target.answer.value;
-  if (input.toLowerCase() === currentCapital.toLowerCase()) {
+  const input = e.target.answer.value.toLowerCase();
+  console.log(`input: ${input}`);
+  if (input === currentCountry.toLowerCase()) {
     score++;
     displayAnswerMessage(true);
+  } else if (alt.length > 0) {
+    checkAlt(input);
   } else {
     displayAnswerMessage(false);
   }
+  
+  alt = [];
   e.target.answer.value = '';
   displayScore();
   displayCountry();
@@ -107,7 +129,7 @@ async function postScore(e) {
     })
   }
 
-  const response = await fetch(`https://capitals-quiz.onrender.com/capitals_scores`, options)
+  const response = await fetch(`https://capitals-quiz.onrender.com/countries_scores`, options)
   console.log(response)
   if (response.status === 201) {
     console.log(`201 true`)

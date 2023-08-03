@@ -1,43 +1,120 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./static/css/style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <link rel="stylesheet" href="./static/css/navbar.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-    <title>Home Page</title>
-</head>
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link href="https://fonts.googleapis.com/css2?family=Ysabeau+SC:wght@600&display=swap" rel="stylesheet">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+      <link rel="icon" href="./static/Images/Favicon-Geo.png">
+      <link rel="stylesheet" href="./static/css/bootstrap.css">
+      <link rel="stylesheet" href="./static/css/style.css">
+      <link rel="stylesheet" href="./static/css/card.css">
+      <link rel="stylesheet" href="./static/css/quiz.css">
+      <title>Geo Quiz</title>
+  </head>
 
     <body>
+<!-- HEADER START -->
+        <header class="titleStrip">GEO QUIZ</header>
+<!-- HEADER END -->
+
+<!-- NAV START -->
         <nav>
             <ul class="nav nav-tabs">
                 <li class="nav-item">
                   <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="./capitals.html">Capital Guesser</a>
+                  <a class="nav-link" href="./capitals.html">Capitals Quiz</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Training</a>
+                  <a class="nav-link" href="./countries.html">Countries Quiz</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="./flags.html">Flags Quiz</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./training.html">Training</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./leaderboard.html">Leaderboard</a>
                 </li>
               </ul>
         </nav>
+<!-- NAV END -->
 
-        <div class= "mycontainer">
-            <div class = "app_name_box">
-                <a href="#"><h1 id="app-name" class="home-header">App Name</h1></a>
-            </div>
-
-            <div class="game_box">
-                <a href="#"><h2 class="home-header game-train">Game</h2></a>
-            </div>
-
-            <div class="train_box">
-                <a href="#"><h2 class="home-header game-train">Train</h2></a>
-            </div>
+<!-- CAROUSEL START -->
+<section id="#carousel" class="slide">
+    <div id="carouselExampleCaptions" class="carousel slide">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" aria-label="Slide 5"></button>
         </div>
+
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="https://www.lingoda.com/wp-content/uploads/2021/11/french-speaking-countries-bis-1.jpg" class="d-block mx-auto" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <button onClick="window.location.href ='./capitals.html'" type="button" class="playNowBtn">Capitals Quiz Play Now</button>
+              <div>
+                <p class="game-desc">Try and guess the capitals of countries and beat the highscore!</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="carousel-inner">
+            <div class="carousel-item">
+              <img src="https://storage.googleapis.com/pod_public/1300/104610.jpg" class="d-block mx-auto" alt="...">
+              <div class="carousel-caption d-none d-md-block">
+                <button onClick="window.location.href ='./countries.html'" type="button" class="playNowBtn">Countries Quiz Play Now</button>
+                <div>
+                  <p class="game-desc">Try and guess the countries that the capital belongs to and beat the highscore!</p>
+                </div>
+              </div>
+            </div>
+
+          <div class="carousel-item">
+            <img src="https://worldview.stratfor.com/sites/default/files/styles/2x1_full/public/howmanycountries.jpg?itok=ztzWTQ4t" class="d-block mx-auto" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <button onClick="window.location.href ='./flags.html'" type="button" class="playNowBtn">Flag Quiz Play Now</button>
+              <p class="game-desc">Try and guess the flags of countries and beat the highscore!</p>
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <img src="https://cdn.shopify.com/s/files/1/0060/9920/6178/files/brain-training.jpg" class="d-block mx-auto" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <button onClick="window.location.href ='./training.html'" type="button" class="playNowBtn">Start Training Now</button>
+              <p class="game-desc">This is the perfect place to grow your knowledge on the capitals of countries around the world.</p>
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <img src="https://plus.unsplash.com/premium_photo-1683749808421-bf411cb88f20?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1113&q=80" class="d-block mx-auto" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <button onClick="window.location.href ='./leaderboard.html'" type="button" class="playNowBtn">Leaderboards</button>
+              <p class="game-desc">Check to see how you're doing in comparison to other players.</p>
+            </div>
+          </div>
+
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+</section>
+
     </body>
 
 </html>

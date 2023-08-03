@@ -1,0 +1,129 @@
+@media only screen and (max-width: 1100px) {}
+
+/*Cards*/
+#train-container {
+    height: 65vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+}
+.cardcontainer,
+.cardcontainer2,
+.cardcontainer3 {
+    width: 400px;
+    height: 250px;
+    display: block;
+    cursor: pointer;
+    perspective: 2000px;
+    transform-style: preserve-3d;
+    border-radius: 15px;
+}
+.cards,
+.cards2,
+.cards3 {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-style: preserve-3d;
+    transition: all 1500ms;
+}
+.front, .back,
+.front2, .back2,
+.front3, .back3 {
+    position: absolute;
+    backface-visibility: hidden;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid #0D2818;
+    border-radius: 15px;
+    font-size: 150%;
+    padding: 30px;
+}
+.front,
+.front2,
+.front3 {
+    background-color: #001b22;
+    color: whitesmoke;
+}
+.back,
+.back2,
+.back3{
+    background-color: #444444;
+    color: white;
+    transform: rotateY(180deg);
+}
+.cards>.front:hover,
+.cards2>.front2:hover,
+.cards3>.front3:hover {
+    box-shadow: 0 10px 30px #9df16c86;
+}
+:checked +.cards,
+:checked +.cards2,
+:checked +.cards3 {
+    transform: rotateY(180deg);
+}
+.cardcontainer>input,
+.cardcontainer2>input,
+.cardcontainer3>input {
+    display: none;
+}
+/*End of cards*/
+
+/* Start of Leaderboard */
+#leaderboard-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    width: 99vw;
+    gap: 100px;
+    padding-left: 1vw;
+}
+
+/*added containers*/
+.capitals-container,
+.flags-container,
+.countries-container{
+    display: flex;
+    flex-direction: column;
+}
+
+/*changed class name from rank*/
+.rank-capitals, 
+.rank-flags, 
+.rank-countries {
+    background-color: #395f60;
+    border-radius: 10px 10px 0 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 10px;
+    width: 28vw;
+}
+
+/*changed class name from ranking*/
+.ranking-capitals,
+.ranking-flags,
+.ranking-countries {
+    background-color: #001b22;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    text-align: center;
+    margin: 0px;
+    font-size: 100%;
+    padding: 20px 80px;
+    border-radius: 0 0 10px 10px;
+}
+/*End of leaderboard*/

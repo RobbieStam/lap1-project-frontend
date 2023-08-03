@@ -51,6 +51,7 @@
 .front2,
 .front3 {
     background-color: #AAE2A9;
+    color: #0D2818;
 }
 .back,
 .back2,
@@ -84,7 +85,6 @@
     height: 88vh;
     width: 100vw;
     gap: 100px;
-
 }
 
 .capitals-container{
@@ -118,9 +118,5 @@
     font-size: 100%;
     padding: 20px 80px;
     border-radius: 0 0 10px 10px;
-}
-
-.first-place{
-    font-size: 2rem;
 }
 /*End of leaderboard*/

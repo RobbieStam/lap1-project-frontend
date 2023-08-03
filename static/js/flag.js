@@ -1,5 +1,6 @@
 const flagIMG = document.getElementById("flag");
 const scoreText = document.querySelector("#score");
+let alt = [];
 let score = 0,
 currentCountry,
 sharedFlags = ["Bouvet Island", "United States Minor Outlying Islands", "Saint Martin (French part)", "Svalbard and Jan Mayen", "Heard Island and McDonald Islands"];
@@ -10,12 +11,15 @@ async function getFlag() {
     try {
       const response = await fetch("https://staging-countries.onrender.com/countries/random")
       const data = await response.json();
-      const flag = data.flag;
       currentCountry = data.name.toLowerCase();
-      flagIMG.src = flag;
+      flagIMG.src = data.flag;
       checkShared();
+      if(data.alt) {
+        alt = data.alt;
+        console.log(alt);
+      }
       console.log(currentCountry);
-      return flag;
+      return data.flag;
     } catch (error) {
       console.log(error);
     }
@@ -26,7 +30,23 @@ function displayScore() {
 function checkAnswer(e) {
   e.preventDefault();
   const input = e.target.answer.value.toLowerCase();
-  if (input === currentCountry || input === alias.toLowerCase()) {
+  if(alt) {
+    for(let i = 0; i < alt.length; i++) {
+      switch (input) {
+        case alt[i].toLowerCase():
+          score++;
+          break;
+        case currentCountry:
+          score++;
+          break;
+        case alias.toLowerCase():
+          score++;
+          break;
+        default:
+          console.log("error!");
+      }
+    }
+  } else if(input === currentCountry || input === alias.toLowerCase()){
     score++;
   }
   e.target.answer.value = '';
@@ -61,6 +81,7 @@ function startTimer() {
 const form = document.querySelector('#flag-guess');
 form.addEventListener('submit', checkAnswer);
 
+// Function to check if the territory shares a flag with a sovereign nation
 function checkShared() {
   for(let i = 0; i < sharedFlags.length; i++) {
     if(currentCountry === sharedFlags[i].toLowerCase()) {
@@ -91,7 +112,3 @@ function checkShared() {
 getFlag();
 displayScore();
 startTimer();
-
-
-// check if shared and assign alias?
-// function to check strings?

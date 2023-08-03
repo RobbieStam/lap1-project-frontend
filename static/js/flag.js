@@ -4,15 +4,15 @@ let score = 0,
 currentCountry,
 sharedFlags = ["Bonaire, Sint Eustatius and Saba", "Bouvet Island", "United States Minor Outlying Islands", "Saint Martin (French part)", "Svalbard and Jan Mayen"];
 
+// Retrieves a random country and its associated flag, but only stores the name and flag info
 async function getFlag() {
     try {
       const response = await fetch("https://staging-countries.onrender.com/countries/random")
       const data = await response.json();
       const flag = data.flag;
-      currentCountry = data.name;
-      console.log(flag);
-      console.log(currentCountry);
+      currentCountry = data.name.toLowerCase();
       flagIMG.src = flag;
+      console.log(currentCountry);
       return flag;
     } catch (error) {
       console.log(error);
@@ -21,13 +21,11 @@ async function getFlag() {
 function displayScore() {
   scoreText.textContent = `Score: ${score}`
 }
-
 function checkAnswer(e) {
   e.preventDefault();
-  const input = e.target.answer.value;
+  const input = e.target.answer.value.toLowerCase();
   if (input === currentCountry) {
     score++;
-    console.log("correct")
   }
   e.target.answer.value = '';
   displayScore();
@@ -62,8 +60,8 @@ const form = document.querySelector('#flag-guess');
 form.addEventListener('submit', checkAnswer);
 
 function checkShared() {
-  for(let i = 0; i < sharedFlags.length; i_++) {
-    if(currentCountry === sharedFlags[i]) {
+  for(let i = 0; i < sharedFlags.length; i++) {
+    if(currentCountry === sharedFlags[i].toLowerCase()) {
       // Code in here to allow for the Flag to be Sovereign Country name
     }
   }

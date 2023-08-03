@@ -8,6 +8,7 @@ sharedFlags = ["Bouvet Island", "United States Minor Outlying Islands", "Saint M
 alias = "";
 
 function startGame() {
+  score = 0;
   replayButton.style.visibility = "hidden";
   submitButton.removeAttribute("disabled");
   getFlag();
@@ -104,6 +105,7 @@ function checkAnswer(e) {
         switch (input) {
           case alt[i].toLowerCase(): case currentCountry: case alias.toLowerCase():
             score++;
+            displayAnswerMessage(true);
             alt = [];
             break;
           default:
@@ -112,11 +114,26 @@ function checkAnswer(e) {
       }
     } else if(input === currentCountry || input === alias.toLowerCase()){
       score++;
+      displayAnswerMessage(true);
+    }
+    else {
+      displayAnswerMessage(false);
     }
   }
   e.target.answer.value = '';
   displayScore();
   getFlag();
+}
+function displayAnswerMessage(isCorrect) {
+  const answerMessage = document.querySelector('#response');
+  answerMessage.style.visibility = 'visible';
+  if (isCorrect) {
+    answerMessage.textContent = `Correct answer!`;
+    answerMessage.style.color = 'blue';
+  } else {
+    answerMessage.textContent = `Incorrect, this is the flag of ${currentCountry}`;
+    answerMessage.style.color = 'firebrick';
+  }
 }
 // Function to check if the territory shares a flag with a sovereign nation, if so assigns it an appropriate alias (since the territory name does NOT change)
 function checkShared() {
@@ -144,18 +161,14 @@ function checkShared() {
 }
 const form = document.querySelector('#flag-guess');
 form.addEventListener('submit', checkAnswer);
-
 const dialog = document.getElementById("dialog");
 const dialogEntry = document.getElementById("name");
 dialogEntry.addEventListener("submit", postScore);
-
 // Form cancel button closes the dialog box
 const cancelButton = document.getElementById("cancel");
 cancelButton.addEventListener("click", () => dialog.close("nameNotGiven"));
-
 const replayButton = document.getElementById("replay");
 replayButton.addEventListener("click", startGame)
-
 const submitButton = document.querySelector('.submit-btn');
 
 startGame();

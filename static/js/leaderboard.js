@@ -1,4 +1,4 @@
-const url = "https://staging-countries.onrender.com/";
+const url = "https://capitals-quiz.onrender.com/";
 
 const capitalsList = document.querySelector(".ranking-capitals");
 const flagsList = document.querySelector(".ranking-flags");

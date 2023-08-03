@@ -1,4 +1,4 @@
-const url = "https://staging-countries.onrender.com/countries/random";
+const url = "https://capitals-quiz.onrender.com/";
 
 let currentCapital, currentCountry;
 let score = 0;
@@ -107,7 +107,7 @@ async function postScore(e) {
     })
   }
 
-  const response = await fetch(`https://staging-countries.onrender.com/capitals_scores`, options)
+  const response = await fetch(`https://capitals-quiz.onrender.com/capitals_scores`, options)
   console.log(response)
   if (response.status === 201) {
     console.log(`201 true`)

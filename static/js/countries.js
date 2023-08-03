@@ -1,5 +1,6 @@
 const url = "https://staging-countries.onrender.com/countries/random";
 
+let alt = [];
 let currentCapital, currentCountry;
 let score = 0;
 const scoreText = document.querySelector("#score");
@@ -24,6 +25,11 @@ function fetchCountry(data) {
   currentCapital = country['capital'];
   currentCountry = country['name'];
   console.log(currentCountry);
+
+  if(data.alt) {
+    alt = data.alt;
+    console.log(alt);
+  }
 }
 
 function displayCountry() {
@@ -44,12 +50,24 @@ function displayAnswerMessage(isCorrect) {
   }
 }
 
+function checkAlt(input) {
+  for (let i = 0; i< alt.length; i++) {
+    if (input === alt[i].toLowerCase()) {
+      score++;
+      displayAnswerMessage(true);
+      alt = [];
+    }
+  }
+}
+
 function checkAnswer(e) {
   e.preventDefault();
-  const input = e.target.answer.value;
-  if (input.toLowerCase() === currentCountry.toLowerCase()) {
+  const input = e.target.answer.value.toLowerCase();
+  if (input === currentCountry.toLowerCase()) {
     score++;
     displayAnswerMessage(true);
+  } else if (alt.length > 0) {
+    checkAlt(input);
   } else {
     displayAnswerMessage(false);
   }
@@ -62,7 +80,11 @@ function displayTimer(timer, timerElement) {
   let minutes = Math.floor(timer / 60);
   let seconds = Math.floor(timer % 60); //can maybe remove 10?
 
-  if (seconds < 10) {
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+
+  if (seconds < 0) {
     seconds = `0${seconds}`;
   }
 
@@ -71,7 +93,7 @@ function displayTimer(timer, timerElement) {
 
 function startTimer() {
   const timerElement = document.querySelector('#timer');
-  let timer = 5; // set duration
+  let timer = 30; // set duration
 
   displayTimer(timer, timerElement); // initialise display
   

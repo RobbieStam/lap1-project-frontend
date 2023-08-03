@@ -1,4 +1,4 @@
-const url = "https://capitals-quiz.onrender.com/";
+const url = "https://capitals-quiz.onrender.com/countries/random";
 
 let currentCapital, currentCountry;
 let score = 0;

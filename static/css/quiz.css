@@ -25,6 +25,12 @@ h6 {
 
 }
 
+#dialog {
+margin: 16vw 70vh;
+border: 3px solid black; 
+color: whitesmoke;
+}
+
 #timer {
     background-color: #395f60;
     border: 2px solid #668080;

@@ -87,11 +87,15 @@
     gap: 100px;
 }
 
-.capitals-container{
+/*added containers*/
+.capitals-container,
+.flags-container,
+.countries-container{
     display: flex;
     flex-direction: column;
 }
 
+/*changed class name from rank*/
 .rank-capitals, 
 .rank-flags, 
 .rank-countries {
@@ -105,6 +109,8 @@
     padding: 10px;
     width: 28vw;
 }
+
+/*changed class name from ranking*/
 .ranking-capitals,
 .ranking-flags,
 .ranking-countries {

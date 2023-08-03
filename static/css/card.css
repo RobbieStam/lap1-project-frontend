@@ -82,9 +82,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 88vh;
-    width: 100vw;
+    height: 80vh;
+    width: 99vw;
     gap: 100px;
+    padding-left: 1vw;
 }
 
 /*added containers*/

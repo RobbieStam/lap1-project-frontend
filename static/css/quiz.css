@@ -19,10 +19,11 @@ h6 {
 
 #flag {
     position: relative;
-    height: 200px;
-    width: auto;
+    max-width: 300px;
+    max-height: 150px;
+    min-width: 300px;
+    min-height: 150px;
     margin: 30px;
-
 }
 
 #timer {

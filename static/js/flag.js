@@ -30,19 +30,23 @@ function displayScore() {
 function checkAnswer(e) {
   e.preventDefault();
   const input = e.target.answer.value.toLowerCase();
-  if(alt) {
+  if(alt.length > 0) {
     for(let i = 0; i < alt.length; i++) {
       switch (input) {
         case alt[i].toLowerCase():
           score++;
+          alt = [];
           break;
         case currentCountry:
           score++;
+          alt = [];
           break;
         case alias.toLowerCase():
           score++;
+          alt = [];
           break;
         default:
+          alt = [];
           console.log("error!");
       }
     }

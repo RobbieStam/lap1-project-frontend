@@ -7,6 +7,13 @@ currentCountry,
 sharedFlags = ["Bouvet Island", "United States Minor Outlying Islands", "Saint Martin (French part)", "Svalbard and Jan Mayen", "Heard Island and McDonald Islands"],
 alias = "";
 
+function startGame() {
+  replayButton.style.visibility = "hidden";
+  submitButton.removeAttribute("disabled");
+  getFlag();
+  displayScore();
+  startTimer();
+}
 // Retrieves a random country and its associated flag, and stores flag, name and alternate names as variables
 async function getFlag() {
     try {
@@ -25,6 +32,27 @@ async function getFlag() {
       console.log(error);
     }
 }
+async function postScore(e) {
+  const name = e.target.name.value;
+  const finalScore = score;
+
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      name: name,
+      score: finalScore
+    })
+  }
+
+  const response = await fetch("https://staging-countries.onrender.com/flags_scores", options)
+  console.log(response)
+  if (response.status === 201) {
+    console.log(`201 true`)
+  }
+}
 function displayScore() {
   scoreText.textContent = `Score: ${score}`
 }
@@ -40,18 +68,29 @@ function displayTimer(timer, timerElement) {
 }
 function startTimer() {
   const timerElement = document.querySelector('#timer');
-  let timer = 90; // set duration
+  let timer = 30; // set duration
 
   displayTimer(timer, timerElement); // initialise display
   
   // countdown
-  setInterval(function () {
+  var changeTimer = setInterval(function () {
     displayTimer(timer, timerElement);
 
     if (--timer < 0) {
       timer = 0;
+
+      endGame();
+      clearInterval(changeTimer);
     }
   }, 1000)
+}
+function endGame() {
+  // Get name and score
+  dialog.showModal();
+
+  submitButton.setAttribute("disabled", true);
+
+  replayButton.style.visibility = "visible";
 }
 // Checks the users answer, checks if the flag is shared by a sovereign country and also allows for alternate answers to be valid: ie; "United Kingdom of Great Britain and Northern Ireland" will accept "United Kingdom" or "UK" as a valid answer
 function checkAnswer(e) {
@@ -106,6 +145,17 @@ function checkShared() {
 const form = document.querySelector('#flag-guess');
 form.addEventListener('submit', checkAnswer);
 
-getFlag();
-displayScore();
-startTimer();
+const dialog = document.getElementById("dialog");
+const dialogEntry = document.getElementById("name");
+dialogEntry.addEventListener("submit", postScore);
+
+// Form cancel button closes the dialog box
+const cancelButton = document.getElementById("cancel");
+cancelButton.addEventListener("click", () => dialog.close("nameNotGiven"));
+
+const replayButton = document.getElementById("replay");
+replayButton.addEventListener("click", startGame)
+
+const submitButton = document.querySelector('.submit-btn');
+
+startGame();

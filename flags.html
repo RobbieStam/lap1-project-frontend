@@ -65,7 +65,26 @@
     <input type="text" name="answer" placeholder="e.g. France" class="form-text">
     <input type="submit" value="Submit" class="submit-btn">
 </form>
+<div id="response">
+  <p id="answer-message"></p>
+</div>
 
+<div>
+  <button id="replay" type="submit">Play Again?</button>
+</div>
+
+<dialog id="dialog" class="quizContainer">
+  <form id="name" method="dialog">
+    <p>
+      <label for="name"><b>Please enter your name here:</b></label>
+      <input type="text" placeholder="Enter Name" name="name" required>
+    </p>
+    <div>
+      <button id="cancel" type="reset">Cancel</button>
+      <button type="submit">Confirm</button>
+    </div>
+  </form>
+</dialog>
 </main>
 
 </body>

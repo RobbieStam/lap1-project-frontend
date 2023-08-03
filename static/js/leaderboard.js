@@ -1,30 +1,94 @@
-const url = "https://staging-countries.onrender.com/scores";
+const url = "https://staging-countries.onrender.com/";
 
-const list = document.querySelector(".ranking");
+const capitalsList = document.querySelector(".ranking-capitals");
+const flagsList = document.querySelector(".ranking-flags");
+const countriesList = document.querySelector(".ranking-countries");
+const lists = [capitalsList, flagsList, countriesList];
 
-function addPlayer(player) {
+let board = 0; // Use to switch boards once completed
+
+function addCapitalsPlayer(player) {
   const li = document.createElement("li");
   const name = player['name'];
   li.textContent = `${name} - ${player.score}`;
-  list.appendChild(li);
+
+  capitalsList.appendChild(li)
+  
 }
 
-function fetchScores(data) {
+function addFlagsPlayer(player) {
+  const li = document.createElement("li");
+  const name = player['name'];
+  li.textContent = `${name} - ${player.score}`;
+
+  flagsList.appendChild(li)
+  
+}
+
+function addCountriesPlayer(player) {
+  const li = document.createElement("li");
+  const name = player['name'];
+  li.textContent = `${name} - ${player.score}`;
+
+  countriesList.appendChild(li)
+  
+}
+
+function fetchCapitalScores(data) {
   const players = data;
   let listLength = 10;
   if (players.length < 10) {
     listLength = players.length;
   }
-
   for (let i = 0; i < players.length; i++) {
-    addPlayer(players[i]);
+    addCapitalsPlayer(players[i]);
   }
 }
 
-function displayScores() {
-  fetch(url)
-  .then(resp => resp.json())
-  .then(fetchScores);
+function fetchFlagScores(data) {
+  const players = data;
+  let listLength = 10;
+  if (players.length < 10) {
+    listLength = players.length;
+  }
+  for (let i = 0; i < players.length; i++) {
+    addFlagsPlayer(players[i]);
+  }
 }
 
-displayScores();
+function fetchCountryScores(data) {
+  const players = data;
+  let listLength = 10;
+  if (players.length < 10) {
+    listLength = players.length;
+  }
+  for (let i = 0; i < players.length; i++) {
+    addCountriesPlayer(players[i]);
+  }
+}
+
+const displayFlagScores = () => {
+  fetch(`${url}flags_scores`)
+  .then(resp => resp.json())
+  .then(fetchFlagScores);
+}
+
+function displayCapitalScores() {
+  fetch(`${url}capitals_scores`)
+  .then(resp => resp.json())
+  .then(fetchCapitalScores);
+}
+
+function displayCountryScores() {
+  fetch(`${url}countries_scores`)
+  .then(resp => resp.json())
+  .then(fetchCountryScores);
+}
+
+function displayAll() {
+  displayCapitalScores()
+  displayFlagScores()
+  displayCountryScores()
+}
+
+displayAll();

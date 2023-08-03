@@ -103,7 +103,7 @@ async function postScore(e) {
     })
   }
 
-  const response = await fetch(`https://staging-countries.onrender.com/scores`, options)
+  const response = await fetch(`https://staging-countries.onrender.com/capitals_scores`, options)
   console.log(response)
   if (response.status === 201) {
     console.log(`201 true`)

@@ -19,11 +19,11 @@ function fetchCountry(data) {
   const country = data;
 
   const textElement = document.querySelector("#question");
-  textElement.textContent = country['name'];
+  textElement.textContent = country['capital'];
 
   currentCapital = country['capital'];
   currentCountry = country['name'];
-  console.log(currentCapital);
+  console.log(currentCountry);
 }
 
 function displayCountry() {
@@ -47,7 +47,7 @@ function displayAnswerMessage(isCorrect) {
 function checkAnswer(e) {
   e.preventDefault();
   const input = e.target.answer.value;
-  if (input.toLowerCase() === currentCapital.toLowerCase()) {
+  if (input.toLowerCase() === currentCountry.toLowerCase()) {
     score++;
     displayAnswerMessage(true);
   } else {
@@ -88,27 +88,27 @@ function startTimer() {
   }, 1000)
 }
 
-async function postScore(e) {
-  const name = e.target.name.value;
-  const finalScore = score;
+// async function postScore(e) {
+//   const name = e.target.name.value;
+//   const finalScore = score;
 
-  const options = {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      name: name,
-      score: finalScore
-    })
-  }
+//   const options = {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json"
+//     },
+//     body: JSON.stringify({
+//       name: name,
+//       score: finalScore
+//     })
+//   }
 
-  const response = await fetch(`https://staging-countries.onrender.com/scores`, options)
-  console.log(response)
-  if (response.status === 201) {
-    console.log(`201 true`)
-  }
-}
+//   const response = await fetch(`https://staging-countries.onrender.com/scores`, options)
+//   console.log(response)
+//   if (response.status === 201) {
+//     console.log(`201 true`)
+//   }
+// }
 
 function startGame() {
   replayButton.style.visibility = "hidden";
@@ -132,7 +132,7 @@ form.addEventListener('submit', checkAnswer);
 
 const dialog = document.getElementById("dialog");
 const dialogEntry = document.getElementById("name");
-dialogEntry.addEventListener("submit", postScore);
+//dialogEntry.addEventListener("submit", postScore);
 
 // Form cancel button closes the dialog box
 const cancelButton = document.getElementById("cancel");

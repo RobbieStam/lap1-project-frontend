@@ -14,6 +14,13 @@ body {
     font-size: x-large;
 }
 
+.game-desc {
+background-color: white;
+color: black;
+padding: 10px;
+margin: 0vh 20vw;
+}
+
 .titleStrip {
     margin: vw 100;
     padding: 0px;

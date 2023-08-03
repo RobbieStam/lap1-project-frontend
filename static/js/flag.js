@@ -1,10 +1,11 @@
 const flagIMG = document.getElementById("flag");
 const scoreText = document.querySelector("#score");
-let alt = [];
-let score = 0,
+let alt = [],
+usedFlags = [],
+score = 0,
 currentCountry,
-sharedFlags = ["Bouvet Island", "United States Minor Outlying Islands", "Saint Martin (French part)", "Svalbard and Jan Mayen", "Heard Island and McDonald Islands"];
-let alias = "";
+sharedFlags = ["Bouvet Island", "United States Minor Outlying Islands", "Saint Martin (French part)", "Svalbard and Jan Mayen", "Heard Island and McDonald Islands"],
+alias = "";
 
 // Retrieves a random country and its associated flag, and stores flag, name and alternate names as variables
 async function getFlag() {
@@ -26,28 +27,6 @@ async function getFlag() {
 }
 function displayScore() {
   scoreText.textContent = `Score: ${score}`
-}
-// Checks the users answer, checks if the flag is shared by a sovereign country and also allows for alternate answers to be valid: ie; "United Kingdom of Great Britain and Northern Ireland" will accept "United Kingdom" or "UK" as a valid answer
-function checkAnswer(e) {
-  e.preventDefault();
-  const input = e.target.answer.value.toLowerCase();
-  if(alt.length > 0) {
-    for(let i = 0; i < alt.length; i++) {
-      switch (input) {
-        case alt[i].toLowerCase(): case currentCountry: case alias.toLowerCase():
-          score++;
-          alt = [];
-          break;
-        default:
-          alt = [];
-      }
-    }
-  } else if(input === currentCountry || input === alias.toLowerCase()){
-    score++;
-  }
-  e.target.answer.value = '';
-  displayScore();
-  getFlag();
 }
 function displayTimer(timer, timerElement) {
   let minutes = Math.floor(timer / 60);
@@ -74,9 +53,32 @@ function startTimer() {
     }
   }, 1000)
 }
-const form = document.querySelector('#flag-guess');
-form.addEventListener('submit', checkAnswer);
-
+// Checks the users answer, checks if the flag is shared by a sovereign country and also allows for alternate answers to be valid: ie; "United Kingdom of Great Britain and Northern Ireland" will accept "United Kingdom" or "UK" as a valid answer
+function checkAnswer(e) {
+  e.preventDefault();
+  const input = e.target.answer.value.toLowerCase();
+  if(!input) {
+    // we don't want anything to happen on blank inputs, just a refresh
+  } else {
+    if(alt.length > 0) {
+      for(let i = 0; i < alt.length; i++) {
+        switch (input) {
+          case alt[i].toLowerCase(): case currentCountry: case alias.toLowerCase():
+            score++;
+            alt = [];
+            break;
+          default:
+            alt = [];
+        }
+      }
+    } else if(input === currentCountry || input === alias.toLowerCase()){
+      score++;
+    }
+  }
+  e.target.answer.value = '';
+  displayScore();
+  getFlag();
+}
 // Function to check if the territory shares a flag with a sovereign nation, if so assigns it an appropriate alias (since the territory name does NOT change)
 function checkShared() {
   for(let i = 0; i < sharedFlags.length; i++) {
@@ -95,12 +97,14 @@ function checkShared() {
           alias = "Australia";
           break;
         default:
-          console.log("Something has gone wrong.");
+          console.log("something has gone wrong");
       }
       console.log("country shares a flag");
     }
   }
 }
+const form = document.querySelector('#flag-guess');
+form.addEventListener('submit', checkAnswer);
 
 getFlag();
 displayScore();

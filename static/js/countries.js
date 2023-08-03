@@ -88,27 +88,27 @@ function startTimer() {
   }, 1000)
 }
 
-// async function postScore(e) {
-//   const name = e.target.name.value;
-//   const finalScore = score;
+async function postScore(e) {
+  const name = e.target.name.value;
+  const finalScore = score;
 
-//   const options = {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json"
-//     },
-//     body: JSON.stringify({
-//       name: name,
-//       score: finalScore
-//     })
-//   }
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      name: name,
+      score: finalScore
+    })
+  }
 
-//   const response = await fetch(`https://staging-countries.onrender.com/scores`, options)
-//   console.log(response)
-//   if (response.status === 201) {
-//     console.log(`201 true`)
-//   }
-// }
+  const response = await fetch(`https://staging-countries.onrender.com/countries_scores`, options)
+  console.log(response)
+  if (response.status === 201) {
+    console.log(`201 true`)
+  }
+}
 
 function startGame() {
   replayButton.style.visibility = "hidden";

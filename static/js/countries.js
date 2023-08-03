@@ -1,6 +1,6 @@
 const url = "https://staging-countries.onrender.com/countries/random";
 
-let alt = [];
+// let alt = [];
 let currentCapital, currentCountry;
 let score = 0;
 const scoreText = document.querySelector("#score");
@@ -26,10 +26,10 @@ function fetchCountry(data) {
   currentCountry = country['name'];
   console.log(currentCountry);
 
-  if(data.alt) {
-    alt = data.alt;
-    console.log(alt);
-  }
+  // if(data.alt) {
+  //   alt = data.alt;
+  //   console.log(alt);
+  // }
 }
 
 function displayCountry() {
@@ -43,7 +43,7 @@ function displayAnswerMessage(isCorrect) {
   answerMessage.style.visibility = 'visible';
   if (isCorrect) {
     answerMessage.textContent = `Correct answer!`;
-    answerMessage.style.color = 'blue';
+    answerMessage.style.color = 'green';
   } else {
     answerMessage.textContent = `Incorrect, ${currentCapital} is the capital of ${currentCountry}`;
     answerMessage.style.color = 'firebrick';
@@ -55,7 +55,6 @@ function checkAlt(input) {
     if (input === alt[i].toLowerCase()) {
       score++;
       displayAnswerMessage(true);
-      alt = [];
     }
   }
 }
@@ -66,11 +65,13 @@ function checkAnswer(e) {
   if (input === currentCountry.toLowerCase()) {
     score++;
     displayAnswerMessage(true);
-  } else if (alt.length > 0) {
-    checkAlt(input);
+  // } else if (alt.length > 0) {
+  //   checkAlt(input);
   } else {
     displayAnswerMessage(false);
   }
+  
+  // alt = [];
   e.target.answer.value = '';
   displayScore();
   displayCountry();
@@ -84,7 +85,7 @@ function displayTimer(timer, timerElement) {
     minutes = `0${minutes}`;
   }
 
-  if (seconds < 0) {
+  if (seconds < 10) {
     seconds = `0${seconds}`;
   }
 
@@ -135,6 +136,7 @@ async function postScore(e) {
 function startGame() {
   replayButton.style.visibility = "hidden";
   submitButton.removeAttribute("disabled");
+  score = 0;
   displayScore();
   displayCountry();
   startTimer();

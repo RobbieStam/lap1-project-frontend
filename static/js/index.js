@@ -71,7 +71,7 @@ function displayTimer(timer, timerElement) {
 
 function startTimer() {
   const timerElement = document.querySelector('#timer');
-  let timer = 5; // set duration
+  let timer = 30; // set duration
 
   displayTimer(timer, timerElement); // initialise display
   

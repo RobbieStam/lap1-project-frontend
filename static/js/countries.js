@@ -80,7 +80,7 @@ function displayTimer(timer, timerElement) {
   let minutes = Math.floor(timer / 60);
   let seconds = Math.floor(timer % 60); //can maybe remove 10?
 
-  if (seconds < 10) {
+  if (seconds < 0) {
     seconds = `0${seconds}`;
   }
 
@@ -89,7 +89,7 @@ function displayTimer(timer, timerElement) {
 
 function startTimer() {
   const timerElement = document.querySelector('#timer');
-  let timer = 5; // set duration
+  let timer = 30; // set duration
 
   displayTimer(timer, timerElement); // initialise display
   

@@ -37,6 +37,8 @@ nav {
     margin-top: 100px;
     display: block;
     border: 3px solid #395f60;;
+    max-width: 650px;
+    min-width: 650px;
 }
 
 h5 {

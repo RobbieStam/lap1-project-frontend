@@ -50,3 +50,8 @@ button {
         width: 27vh;
         padding: 20px;
 }
+
+button:hover {
+    background-color: #001318;
+    color: #56d1f2;
+}

@@ -38,7 +38,8 @@ color: whitesmoke;
 }
 
 #timer {
-    background-color: #395f60;
+    background-color: #001b22;
+    color: #56d1f2;
     border: 2px solid #668080;
     margin: 1vh 10vw;
     text-align: center;
@@ -49,7 +50,8 @@ color: whitesmoke;
 
 .quizContainer {
     padding: 20px;
-    background-color: #395f60;
+    background-color: #001b22;
+    color: whitesmoke;
     border: 2px solid #668080;
     border-radius: 5px;
     text-align: center;

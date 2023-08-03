@@ -132,7 +132,7 @@ form.addEventListener('submit', checkAnswer);
 
 const dialog = document.getElementById("dialog");
 const dialogEntry = document.getElementById("name");
-//dialogEntry.addEventListener("submit", postScore);
+dialogEntry.addEventListener("submit", postScore);
 
 // Form cancel button closes the dialog box
 const cancelButton = document.getElementById("cancel");

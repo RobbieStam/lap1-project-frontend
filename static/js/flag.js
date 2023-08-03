@@ -98,7 +98,7 @@ function checkAnswer(e) {
   e.preventDefault();
   const input = e.target.answer.value.toLowerCase();
   if(!input) {
-    // we don't want anything to happen on blank inputs, just a refresh
+    displayAnswerMessage(false);
   } else {
     if(alt.length > 0) {
       for(let i = 0; i < alt.length; i++) {
@@ -129,7 +129,7 @@ function displayAnswerMessage(isCorrect) {
   answerMessage.style.visibility = 'visible';
   if (isCorrect) {
     answerMessage.textContent = `Correct answer!`;
-    answerMessage.style.color = 'blue';
+    answerMessage.style.color = 'green';
   } else {
     answerMessage.textContent = `Incorrect, this is the flag of ${currentCountry}`;
     answerMessage.style.color = 'firebrick';

@@ -83,6 +83,10 @@ function startTimer() {
       timer = 0;
       // Get name and score
       dialog.showModal();
+      
+      const submitButton = document.querySelector('.submit-btn');
+      submitButton.setAttribute("disabled", true);
+
       clearInterval(changeTimer);
     }
   }, 1000)

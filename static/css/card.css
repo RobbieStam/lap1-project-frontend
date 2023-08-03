@@ -50,8 +50,8 @@
 .front,
 .front2,
 .front3 {
-    background-color: #AAE2A9;
-    color: #0D2818;
+    background-color: #001b22;
+    color: whitesmoke;
 }
 .back,
 .back2,
@@ -115,7 +115,7 @@
 .ranking-capitals,
 .ranking-flags,
 .ranking-countries {
-    background-color: #0D2818;
+    background-color: #001b22;
     display: flex;
     flex-direction: column;
     gap: 10px;

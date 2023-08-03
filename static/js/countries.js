@@ -1,6 +1,6 @@
 const url = "https://staging-countries.onrender.com/countries/random";
 
-// let alt = [];
+let alt = [];
 let currentCapital, currentCountry;
 let score = 0;
 const scoreText = document.querySelector("#score");
@@ -26,10 +26,10 @@ function fetchCountry(data) {
   currentCountry = country['name'];
   console.log(currentCountry);
 
-  // if(data.alt) {
-  //   alt = data.alt;
-  //   console.log(alt);
-  // }
+  if(data.alt) {
+    alt = data.alt;
+    console.log(alt);
+  }
 }
 
 function displayCountry() {
@@ -55,6 +55,8 @@ function checkAlt(input) {
     if (input === alt[i].toLowerCase()) {
       score++;
       displayAnswerMessage(true);
+    } else {
+      displayAnswerMessage(false);
     }
   }
 }
@@ -66,13 +68,13 @@ function checkAnswer(e) {
   if (input === currentCountry.toLowerCase()) {
     score++;
     displayAnswerMessage(true);
-  // } else if (alt.length > 0) {
-  //   checkAlt(input);
+  } else if (alt.length > 0) {
+    checkAlt(input);
   } else {
     displayAnswerMessage(false);
   }
   
-  // alt = [];
+  alt = [];
   e.target.answer.value = '';
   displayScore();
   displayCountry();

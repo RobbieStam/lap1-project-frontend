@@ -6,7 +6,7 @@ currentCountry,
 sharedFlags = ["Bouvet Island", "United States Minor Outlying Islands", "Saint Martin (French part)", "Svalbard and Jan Mayen", "Heard Island and McDonald Islands"];
 let alias = "";
 
-// Retrieves a random country and its associated flag, but only stores the name and flag info
+// Retrieves a random country and its associated flag, and stores flag, name and alternate names as variables
 async function getFlag() {
     try {
       const response = await fetch("https://staging-countries.onrender.com/countries/random")
@@ -27,6 +27,7 @@ async function getFlag() {
 function displayScore() {
   scoreText.textContent = `Score: ${score}`
 }
+// Checks the users answer, checks if the flag is shared by a sovereign country and also allows for alternate answers to be valid: ie; "United Kingdom of Great Britain and Northern Ireland" will accept "United Kingdom" or "UK" as a valid answer
 function checkAnswer(e) {
   e.preventDefault();
   const input = e.target.answer.value.toLowerCase();
@@ -47,7 +48,6 @@ function checkAnswer(e) {
           break;
         default:
           alt = [];
-          console.log("error!");
       }
     }
   } else if(input === currentCountry || input === alias.toLowerCase()){
@@ -85,7 +85,7 @@ function startTimer() {
 const form = document.querySelector('#flag-guess');
 form.addEventListener('submit', checkAnswer);
 
-// Function to check if the territory shares a flag with a sovereign nation
+// Function to check if the territory shares a flag with a sovereign nation, if so assigns it an appropriate alias (since the territory name does NOT change)
 function checkShared() {
   for(let i = 0; i < sharedFlags.length; i++) {
     if(currentCountry === sharedFlags[i].toLowerCase()) {

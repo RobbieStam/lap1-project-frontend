@@ -1,6 +1,6 @@
 const url = "https://staging-countries.onrender.com/countries/random";
 
-let currentCapital;
+let currentCapital, currentCountry;
 let score = 0;
 const scoreText = document.querySelector("#score");
 

@@ -114,6 +114,12 @@ function startTimer() {
 //   }
 // }
 
+function startGame() {
+  displayScore();
+  displayCountry();
+  startTimer();
+}
+
 const form = document.querySelector('#country-guess');
 form.addEventListener('submit', checkAnswer);
 
@@ -125,6 +131,4 @@ const dialogEntry = document.getElementById("name");
 const cancelButton = document.getElementById("cancel");
 cancelButton.addEventListener("click", () => dialog.close("nameNotGiven"));
 
-displayScore();
-displayCountry();
-startTimer();
+startGame();

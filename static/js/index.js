@@ -117,6 +117,7 @@ async function postScore(e) {
 function startGame() {
   replayButton.style.visibility = "hidden";
   submitButton.removeAttribute("disabled");
+  score = 0;
   displayScore();
   displayCountry();
   startTimer();

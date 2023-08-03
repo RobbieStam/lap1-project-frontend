@@ -1,4 +1,4 @@
-const url = "https://staging-countries.onrender.com/countries/random";
+const url = "https://capitals-quiz.onrender.com/countries/random";
 
 let currentCapital, currentCountry;
 let score = 0;
@@ -37,7 +37,7 @@ function displayAnswerMessage(isCorrect) {
   answerMessage.style.visibility = 'visible';
   if (isCorrect) {
     answerMessage.textContent = `Correct answer!`;
-    answerMessage.style.color = 'blue';
+    answerMessage.style.color = 'green';
   } else {
     answerMessage.textContent = `Incorrect, ${currentCapital} is the capital of ${currentCountry}`;
     answerMessage.style.color = 'firebrick';
@@ -107,7 +107,7 @@ async function postScore(e) {
     })
   }
 
-  const response = await fetch(`https://staging-countries.onrender.com/capitals_scores`, options)
+  const response = await fetch(`https://capitals-quiz.onrender.com/capitals_scores`, options)
   console.log(response)
   if (response.status === 201) {
     console.log(`201 true`)
@@ -117,6 +117,7 @@ async function postScore(e) {
 function startGame() {
   replayButton.style.visibility = "hidden";
   submitButton.removeAttribute("disabled");
+  score = 0;
   displayScore();
   displayCountry();
   startTimer();

@@ -1,4 +1,4 @@
-const url = "https://staging-countries.onrender.com/";
+const url = "https://capitals-quiz.onrender.com/";
 
 const capitalsList = document.querySelector(".ranking-capitals");
 const flagsList = document.querySelector(".ranking-flags");
@@ -36,33 +36,33 @@ function addCountriesPlayer(player) {
 
 function fetchCapitalScores(data) {
   const players = data;
-  let listLength = 10;
-  if (players.length < 10) {
+  let listLength = 5;
+  if (players.length < listLength) {
     listLength = players.length;
   }
-  for (let i = 0; i < players.length; i++) {
+  for (let i = 0; i < listLength; i++) {
     addCapitalsPlayer(players[i]);
   }
 }
 
 function fetchFlagScores(data) {
   const players = data;
-  let listLength = 10;
-  if (players.length < 10) {
+  let listLength = 5;
+  if (players.length < listLength) {
     listLength = players.length;
   }
-  for (let i = 0; i < players.length; i++) {
+  for (let i = 0; i < listLength; i++) {
     addFlagsPlayer(players[i]);
   }
 }
 
 function fetchCountryScores(data) {
   const players = data;
-  let listLength = 10;
-  if (players.length < 10) {
+  let listLength = 5;
+  if (players.length < listLength) {
     listLength = players.length;
   }
-  for (let i = 0; i < players.length; i++) {
+  for (let i = 0; i < listLength; i++) {
     addCountriesPlayer(players[i]);
   }
 }

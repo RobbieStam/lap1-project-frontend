@@ -1,37 +1,61 @@
 const flagIMG = document.getElementById("flag");
 const scoreText = document.querySelector("#score");
-let score = 0,
+let alt = [],
+usedFlags = [],
+score = 0,
 currentCountry,
-sharedFlags = ["Bonaire, Sint Eustatius and Saba", "Bouvet Island", "United States Minor Outlying Islands", "Saint Martin (French part)", "Svalbard and Jan Mayen"];
+sharedFlags = ["Bouvet Island", "United States Minor Outlying Islands", "Saint Martin (French part)", "Svalbard and Jan Mayen", "Heard Island and McDonald Islands"],
+alias = "";
 
+function startGame() {
+  score = 0;
+  replayButton.style.visibility = "hidden";
+  submitButton.removeAttribute("disabled");
+  getFlag();
+  displayScore();
+  startTimer();
+}
+// Retrieves a random country and its associated flag, and stores flag, name and alternate names as variables
 async function getFlag() {
     try {
-      const response = await fetch("https://staging-countries.onrender.com/countries/random")
+      const response = await fetch("https://capitals-quiz.onrender.com/countries/random")
       const data = await response.json();
-      const flag = data.flag;
-      currentCountry = data.name;
-      console.log(flag);
+      currentCountry = data.name.toLowerCase();
+      flagIMG.src = data.flag;
+      checkShared();
+      if(data.alt) {
+        alt = data.alt;
+        console.log(alt);
+      }
       console.log(currentCountry);
-      flagIMG.src = flag;
-      return flag;
+      return data.flag;
     } catch (error) {
       console.log(error);
     }
 }
+async function postScore(e) {
+  const name = e.target.name.value;
+  const finalScore = score;
+
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      name: name,
+      score: finalScore
+    })
+  }
+
+  const response = await fetch("https://capitals-quiz.onrender.com/flags_scores", options)
+  console.log(response)
+  if (response.status === 201) {
+    console.log(`201 true`)
+  }
+}
 function displayScore() {
   scoreText.textContent = `Score: ${score}`
-}
-
-function checkAnswer(e) {
-  e.preventDefault();
-  const input = e.target.answer.value;
-  if (input === currentCountry) {
-    score++;
-    console.log("correct")
-  }
-  e.target.answer.value = '';
-  displayScore();
-  getFlag();
 }
 function displayTimer(timer, timerElement) {
   let minutes = Math.floor(timer / 60);
@@ -45,30 +69,106 @@ function displayTimer(timer, timerElement) {
 }
 function startTimer() {
   const timerElement = document.querySelector('#timer');
-  let timer = 90; // set duration
+  let timer = 30; // set duration
 
   displayTimer(timer, timerElement); // initialise display
   
   // countdown
-  setInterval(function () {
+  var changeTimer = setInterval(function () {
     displayTimer(timer, timerElement);
 
     if (--timer < 0) {
       timer = 0;
+
+      endGame();
+      clearInterval(changeTimer);
     }
   }, 1000)
 }
-const form = document.querySelector('#flag-guess');
-form.addEventListener('submit', checkAnswer);
+function endGame() {
+  // Get name and score
+  dialog.showModal();
 
+  submitButton.setAttribute("disabled", true);
+
+  replayButton.style.visibility = "visible";
+}
+// Checks the users answer, checks if the flag is shared by a sovereign country and also allows for alternate answers to be valid: ie; "United Kingdom of Great Britain and Northern Ireland" will accept "United Kingdom" or "UK" as a valid answer
+function checkAnswer(e) {
+  e.preventDefault();
+  const input = e.target.answer.value.toLowerCase();
+  if(!input) {
+    displayAnswerMessage(false);
+  } else {
+    if(alt.length > 0) {
+      for(let i = 0; i < alt.length; i++) {
+        switch (input) {
+          case alt[i].toLowerCase(): case currentCountry: case alias.toLowerCase():
+            score++;
+            displayAnswerMessage(true);
+            alt = [];
+            break;
+          default:
+            alt = [];
+        }
+      }
+    } else if(input === currentCountry || input === alias.toLowerCase()){
+      score++;
+      displayAnswerMessage(true);
+    }
+    else {
+      displayAnswerMessage(false);
+    }
+  }
+  e.target.answer.value = '';
+  displayScore();
+  getFlag();
+}
+function displayAnswerMessage(isCorrect) {
+  const answerMessage = document.querySelector('#response');
+  answerMessage.style.visibility = 'visible';
+  if (isCorrect) {
+    answerMessage.textContent = `Correct answer!`;
+    answerMessage.style.color = 'green';
+  } else {
+    answerMessage.textContent = `Incorrect, this is the flag of ${currentCountry}`;
+    answerMessage.style.color = 'firebrick';
+  }
+}
+// Function to check if the territory shares a flag with a sovereign nation, if so assigns it an appropriate alias (since the territory name does NOT change)
 function checkShared() {
-  for(let i = 0; i < sharedFlags.length; i_++) {
-    if(currentCountry === sharedFlags[i]) {
-      // Code in here to allow for the Flag to be Sovereign Country name
+  for(let i = 0; i < sharedFlags.length; i++) {
+    if(currentCountry === sharedFlags[i].toLowerCase()) {
+      switch(sharedFlags[i]) {
+        case "Bouvet Island": case "Svalbard and Jan Mayen":
+          alias = "Norway";
+          break;
+        case "United States Minor Outlying Islands":
+          alias = "United States";
+          break;
+        case "Saint Martin (French part)":
+          alias = "France";
+          break;
+        case "Heard Island and McDonald Islands":
+          alias = "Australia";
+          break;
+        default:
+          console.log("something has gone wrong");
+      }
+      console.log("country shares a flag");
     }
   }
 }
+const form = document.querySelector('#flag-guess');
+form.addEventListener('submit', checkAnswer);
+const dialog = document.getElementById("dialog");
+const dialogEntry = document.getElementById("name");
+dialogEntry.addEventListener("submit", postScore);
+// Form cancel button closes the dialog box
+const cancelButton = document.getElementById("cancel");
+cancelButton.addEventListener("click", () => dialog.close("nameNotGiven"));
+const replayButton = document.getElementById("replay");
+replayButton.addEventListener("click", startGame)
+const submitButton = document.querySelector('.submit-btn');
 
-getFlag();
-displayScore();
-startTimer();
+startGame();

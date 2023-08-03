@@ -1,4 +1,4 @@
-const url = "https://staging-countries.onrender.com/countries/random";
+const url = "https://capitals-quiz.onrender.com/countries/random";
 
 let alt = [];
 let currentCapital, currentCountry;
@@ -43,7 +43,7 @@ function displayAnswerMessage(isCorrect) {
   answerMessage.style.visibility = 'visible';
   if (isCorrect) {
     answerMessage.textContent = `Correct answer!`;
-    answerMessage.style.color = 'blue';
+    answerMessage.style.color = 'green';
   } else {
     answerMessage.textContent = `Incorrect, ${currentCapital} is the capital of ${currentCountry}`;
     answerMessage.style.color = 'firebrick';
@@ -55,7 +55,8 @@ function checkAlt(input) {
     if (input === alt[i].toLowerCase()) {
       score++;
       displayAnswerMessage(true);
-      alt = [];
+    } else {
+      displayAnswerMessage(false);
     }
   }
 }
@@ -63,6 +64,7 @@ function checkAlt(input) {
 function checkAnswer(e) {
   e.preventDefault();
   const input = e.target.answer.value.toLowerCase();
+  console.log(`input: ${input}`);
   if (input === currentCountry.toLowerCase()) {
     score++;
     displayAnswerMessage(true);
@@ -71,6 +73,8 @@ function checkAnswer(e) {
   } else {
     displayAnswerMessage(false);
   }
+  
+  alt = [];
   e.target.answer.value = '';
   displayScore();
   displayCountry();
@@ -84,7 +88,7 @@ function displayTimer(timer, timerElement) {
     minutes = `0${minutes}`;
   }
 
-  if (seconds < 0) {
+  if (seconds < 10) {
     seconds = `0${seconds}`;
   }
 
@@ -125,7 +129,7 @@ async function postScore(e) {
     })
   }
 
-  const response = await fetch(`https://staging-countries.onrender.com/countries_scores`, options)
+  const response = await fetch(`https://capitals-quiz.onrender.com/countries_scores`, options)
   console.log(response)
   if (response.status === 201) {
     console.log(`201 true`)
@@ -135,6 +139,7 @@ async function postScore(e) {
 function startGame() {
   replayButton.style.visibility = "hidden";
   submitButton.removeAttribute("disabled");
+  score = 0;
   displayScore();
   displayCountry();
   startTimer();

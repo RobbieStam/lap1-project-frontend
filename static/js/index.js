@@ -81,8 +81,8 @@ function startTimer() {
 
     if (--timer < 0) {
       timer = 0;
-      // Get name and score
-      dialog.showModal();
+
+      endGame();
       clearInterval(changeTimer);
     }
   }, 1000)
@@ -110,6 +110,23 @@ async function postScore(e) {
   }
 }
 
+function startGame() {
+  replayButton.style.visibility = "hidden";
+  submitButton.removeAttribute("disabled");
+  displayScore();
+  displayCountry();
+  startTimer();
+}
+
+function endGame() {
+  // Get name and score
+  dialog.showModal();
+
+  submitButton.setAttribute("disabled", true);
+
+  replayButton.style.visibility = "visible";
+}
+
 const form = document.querySelector('#country-guess');
 form.addEventListener('submit', checkAnswer);
 
@@ -121,6 +138,9 @@ dialogEntry.addEventListener("submit", postScore);
 const cancelButton = document.getElementById("cancel");
 cancelButton.addEventListener("click", () => dialog.close("nameNotGiven"));
 
-displayScore();
-displayCountry();
-startTimer();
+const replayButton = document.getElementById("replay");
+replayButton.addEventListener("click", startGame)
+
+const submitButton = document.querySelector('.submit-btn');
+
+startGame();

@@ -129,7 +129,7 @@ function displayAnswerMessage(isCorrect) {
   answerMessage.style.visibility = 'visible';
   if (isCorrect) {
     answerMessage.textContent = `Correct answer!`;
-    answerMessage.style.color = 'blue';
+    answerMessage.style.color = 'green';
   } else {
     answerMessage.textContent = `Incorrect, this is the flag of ${currentCountry}`;
     answerMessage.style.color = 'firebrick';

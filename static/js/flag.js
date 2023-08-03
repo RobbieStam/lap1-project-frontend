@@ -2,7 +2,8 @@ const flagIMG = document.getElementById("flag");
 const scoreText = document.querySelector("#score");
 let score = 0,
 currentCountry,
-sharedFlags = ["Bonaire, Sint Eustatius and Saba", "Bouvet Island", "United States Minor Outlying Islands", "Saint Martin (French part)", "Svalbard and Jan Mayen"];
+sharedFlags = ["Bouvet Island", "United States Minor Outlying Islands", "Saint Martin (French part)", "Svalbard and Jan Mayen", "Heard Island and McDonald Islands"];
+let alias = "";
 
 // Retrieves a random country and its associated flag, but only stores the name and flag info
 async function getFlag() {
@@ -12,6 +13,7 @@ async function getFlag() {
       const flag = data.flag;
       currentCountry = data.name.toLowerCase();
       flagIMG.src = flag;
+      checkShared();
       console.log(currentCountry);
       return flag;
     } catch (error) {
@@ -24,7 +26,7 @@ function displayScore() {
 function checkAnswer(e) {
   e.preventDefault();
   const input = e.target.answer.value.toLowerCase();
-  if (input === currentCountry) {
+  if (input === currentCountry || input === alias.toLowerCase()) {
     score++;
   }
   e.target.answer.value = '';
@@ -62,7 +64,26 @@ form.addEventListener('submit', checkAnswer);
 function checkShared() {
   for(let i = 0; i < sharedFlags.length; i++) {
     if(currentCountry === sharedFlags[i].toLowerCase()) {
-      // Code in here to allow for the Flag to be Sovereign Country name
+      switch(sharedFlags[i]) {
+        case "Bouvet Island":
+          alias = "Norway";
+          break;
+        case "United States Minor Outlying Islands":
+          alias = "United States";
+          break;
+        case "Saint Martin (French part)":
+          alias = "France";
+          break;
+        case "Svalbard and Jan Mayen":
+          alias = "Norway";
+          break;
+        case "Heard Island and McDonald Islands":
+          alias = "Australia";
+          break;
+        default:
+          console.log("Something has gone wrong.");
+      }
+      console.log("country shares a flag");
     }
   }
 }
@@ -70,3 +91,7 @@ function checkShared() {
 getFlag();
 displayScore();
 startTimer();
+
+
+// check if shared and assign alias?
+// function to check strings?

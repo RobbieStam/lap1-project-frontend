@@ -34,15 +34,7 @@ function checkAnswer(e) {
   if(alt.length > 0) {
     for(let i = 0; i < alt.length; i++) {
       switch (input) {
-        case alt[i].toLowerCase():
-          score++;
-          alt = [];
-          break;
-        case currentCountry:
-          score++;
-          alt = [];
-          break;
-        case alias.toLowerCase():
+        case alt[i].toLowerCase(): case currentCountry: case alias.toLowerCase():
           score++;
           alt = [];
           break;
@@ -90,7 +82,7 @@ function checkShared() {
   for(let i = 0; i < sharedFlags.length; i++) {
     if(currentCountry === sharedFlags[i].toLowerCase()) {
       switch(sharedFlags[i]) {
-        case "Bouvet Island":
+        case "Bouvet Island": case "Svalbard and Jan Mayen":
           alias = "Norway";
           break;
         case "United States Minor Outlying Islands":
@@ -98,9 +90,6 @@ function checkShared() {
           break;
         case "Saint Martin (French part)":
           alias = "France";
-          break;
-        case "Svalbard and Jan Mayen":
-          alias = "Norway";
           break;
         case "Heard Island and McDonald Islands":
           alias = "Australia";

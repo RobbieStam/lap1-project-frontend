@@ -62,6 +62,7 @@ function checkAlt(input) {
 function checkAnswer(e) {
   e.preventDefault();
   const input = e.target.answer.value.toLowerCase();
+  console.log(`input: ${input}`);
   if (input === currentCountry.toLowerCase()) {
     score++;
     displayAnswerMessage(true);

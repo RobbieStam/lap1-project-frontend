@@ -57,7 +57,7 @@ h5 {
     border: 3px solid #668080;
     color: whitesmoke;
     overflow: wrap;
-    min-width: 270px;
+    min-width: 255px;
 }
 
 .playNowBtn:hover {

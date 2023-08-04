@@ -4,6 +4,7 @@ main {
     justify-content: center;
     align-items: center;
     margin: 40px;
+    margin-top: 2vh;
 }
 
 h2 {
@@ -15,15 +16,18 @@ h6 {
     font-family: Ysabeau SC;
     font-size: 50px;
     border-bottom: 3px solid #001318;
+    margin-top: 0px;
 }
 
 #flag {
     position: relative;
     max-width: 300px;
-    max-height: 150px;
+    max-height: 200px;
     min-width: 300px;
-    min-height: 150px;
-    margin: 30px;
+    min-height: 200px;
+    margin: 30px; 
+    margin-top: 0px;
+    
 }
 
 #flag-question {
@@ -80,5 +84,13 @@ color: whitesmoke;
 }
 
 .form-text {
-    padding: 5px;
+    padding: 10px;
+    border: 2px solid #668080;
 }
+
+.submit-btn {
+    padding: 0.9vh;
+    margin-left: 10px;
+    border: 2px solid #668080;
+}
+

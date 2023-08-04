@@ -25,7 +25,6 @@ async function getFlag() {
       checkShared();
       if(data.alt) {
         alt = data.alt;
-        console.log(alt);
       }
       console.log(currentCountry);
       return data.flag;
@@ -93,37 +92,40 @@ function endGame() {
 
   replayButton.style.visibility = "visible";
 }
+
+function checkAlt(input) {
+  for (let i = 0; i< alt.length; i++) {
+    if (input === alt[i].toLowerCase()) {
+      score++;
+      displayAnswerMessage(true);
+    } else {
+      displayAnswerMessage(false);
+    }
+  }
+}
 // Checks the users answer, checks if the flag is shared by a sovereign country and also allows for alternate answers to be valid: ie; "United Kingdom of Great Britain and Northern Ireland" will accept "United Kingdom" or "UK" as a valid answer
 function checkAnswer(e) {
   e.preventDefault();
   const input = e.target.answer.value.toLowerCase();
   if(!input) {
     displayAnswerMessage(false);
+  } 
+  if(input === currentCountry.toLowerCase()) {
+    score ++;
+    displayAnswerMessage(true);
+  } else  if (alt.length > 0) {
+    checkAlt(input);
+  } else if (input === alias.toLowerCase()) {
+    score ++;
+    displayAnswerMessage(true);
   } else {
-    if(alt.length > 0) {
-      for(let i = 0; i < alt.length; i++) {
-        switch (input) {
-          case alt[i].toLowerCase(): case currentCountry: case alias.toLowerCase():
-            score++;
-            displayAnswerMessage(true);
-            alt = [];
-            break;
-          default:
-            alt = [];
-        }
-      }
-    } else if(input === currentCountry || input === alias.toLowerCase()){
-      score++;
-      displayAnswerMessage(true);
-    }
-    else {
       displayAnswerMessage(false);
-    }
   }
   e.target.answer.value = '';
   displayScore();
   getFlag();
 }
+
 function displayAnswerMessage(isCorrect) {
   const answerMessage = document.querySelector('#response');
   answerMessage.style.visibility = 'visible';
@@ -155,7 +157,6 @@ function checkShared() {
         default:
           console.log("something has gone wrong");
       }
-      console.log("country shares a flag");
     }
   }
 }

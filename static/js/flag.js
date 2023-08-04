@@ -115,7 +115,7 @@ function checkAnswer(e) {
     displayAnswerMessage(true);
   } else  if (alt.length > 0) {
     checkAlt(input);
-  } else if (input === alias.toLowerCase()) {
+  } else if (input && input === alias.toLowerCase()) {
     score ++;
     displayAnswerMessage(true);
   } else {

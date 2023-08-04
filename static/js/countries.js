@@ -9,12 +9,6 @@ function displayScore() {
   scoreText.textContent = `Score: ${score}`
 }
 
-// function getRandomCountry(countries) {
-//   const max = countries.length;
-//   const randIdx = Math.floor(Math.random() * max);
-//   return countries[randIdx];
-// }
-
 function fetchCountry(data) {
 
   const country = data;
@@ -24,11 +18,11 @@ function fetchCountry(data) {
 
   currentCapital = country['capital'];
   currentCountry = country['name'];
-  console.log(currentCountry);
+  // console.log(currentCountry);
 
   if(data.alt) {
     alt = data.alt;
-    console.log(alt);
+    // console.log(alt);
   }
 }
 
@@ -39,7 +33,6 @@ function displayCountry() {
 }
 
 function displayAnswerMessage(isCorrect) {
-  const answerMessage = document.querySelector('#response');
   answerMessage.style.visibility = 'visible';
   if (isCorrect) {
     answerMessage.textContent = `Correct answer!`;
@@ -64,7 +57,7 @@ function checkAlt(input) {
 function checkAnswer(e) {
   e.preventDefault();
   const input = e.target.answer.value.toLowerCase();
-  console.log(`input: ${input}`);
+  // console.log(`input: ${input}`);
   if (input === currentCountry.toLowerCase()) {
     score++;
     displayAnswerMessage(true);
@@ -82,7 +75,7 @@ function checkAnswer(e) {
 
 function displayTimer(timer, timerElement) {
   let minutes = Math.floor(timer / 60);
-  let seconds = Math.floor(timer % 60); //can maybe remove 10?
+  let seconds = Math.floor(timer % 60);
 
   if (minutes < 10) {
     minutes = `0${minutes}`;
@@ -138,6 +131,7 @@ async function postScore(e) {
 
 function startGame() {
   replayButton.style.visibility = "hidden";
+  answerMessage.style.visibility = "hidden";
   submitButton.removeAttribute("disabled");
   score = 0;
   displayScore();
@@ -153,6 +147,8 @@ function endGame() {
 
   replayButton.style.visibility = "visible";
 }
+
+const answerMessage = document.querySelector('#response');
 
 const form = document.querySelector('#country-guess');
 form.addEventListener('submit', checkAnswer);

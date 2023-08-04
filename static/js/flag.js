@@ -10,6 +10,7 @@ alias = "";
 function startGame() {
   score = 0;
   replayButton.style.visibility = "hidden";
+  answerMessage.style.visibility = "hidden";
   submitButton.removeAttribute("disabled");
   getFlag();
   displayScore();
@@ -20,13 +21,13 @@ async function getFlag() {
     try {
       const response = await fetch("https://capitals-quiz.onrender.com/countries/random")
       const data = await response.json();
-      currentCountry = data.name.toLowerCase();
+      currentCountry = data.name;
       flagIMG.src = data.flag;
       checkShared();
       if(data.alt) {
         alt = data.alt;
       }
-      console.log(currentCountry);
+      // console.log(currentCountry);
       return data.flag;
     } catch (error) {
       console.log(error);
@@ -58,7 +59,11 @@ function displayScore() {
 }
 function displayTimer(timer, timerElement) {
   let minutes = Math.floor(timer / 60);
-  let seconds = Math.floor(timer % 60); //can maybe remove 10?
+  let seconds = Math.floor(timer % 60);
+
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
 
   if (seconds < 10) {
     seconds = `0${seconds}`;
@@ -127,13 +132,12 @@ function checkAnswer(e) {
 }
 
 function displayAnswerMessage(isCorrect) {
-  const answerMessage = document.querySelector('#response');
   answerMessage.style.visibility = 'visible';
   if (isCorrect) {
     answerMessage.textContent = `Correct answer!`;
     answerMessage.style.color = 'green';
   } else {
-    answerMessage.textContent = `Incorrect, this is the flag of ${currentCountry}`;
+    answerMessage.textContent = `Incorrect, it was the flag of ${currentCountry}`;
     answerMessage.style.color = 'firebrick';
   }
 }
@@ -160,6 +164,8 @@ function checkShared() {
     }
   }
 }
+
+const answerMessage = document.querySelector('#response');
 const form = document.querySelector('#flag-guess');
 form.addEventListener('submit', checkAnswer);
 const dialog = document.getElementById("dialog");

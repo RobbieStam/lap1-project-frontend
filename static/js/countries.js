@@ -18,11 +18,11 @@ function fetchCountry(data) {
 
   currentCapital = country['capital'];
   currentCountry = country['name'];
-  console.log(currentCountry);
+  // console.log(currentCountry);
 
   if(data.alt) {
     alt = data.alt;
-    console.log(alt);
+    // console.log(alt);
   }
 }
 
@@ -58,7 +58,7 @@ function checkAlt(input) {
 function checkAnswer(e) {
   e.preventDefault();
   const input = e.target.answer.value.toLowerCase();
-  console.log(`input: ${input}`);
+  // console.log(`input: ${input}`);
   if (input === currentCountry.toLowerCase()) {
     score++;
     displayAnswerMessage(true);

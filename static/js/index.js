@@ -17,7 +17,7 @@ function fetchCountry(data) {
 
   currentCapital = country['capital'];
   currentCountry = country['name'];
-  console.log(currentCapital);
+  // console.log(currentCapital);
 }
 
 function displayCountry() {

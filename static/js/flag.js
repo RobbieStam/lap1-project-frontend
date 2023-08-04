@@ -26,7 +26,7 @@ async function getFlag() {
       if(data.alt) {
         alt = data.alt;
       }
-      console.log(currentCountry);
+      // console.log(currentCountry);
       return data.flag;
     } catch (error) {
       console.log(error);

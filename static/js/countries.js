@@ -22,7 +22,7 @@ function fetchCountry(data) {
 
   if(data.alt) {
     alt = data.alt;
-    // console.log(alt);
+    console.log(alt);
   }
 }
 
@@ -48,6 +48,7 @@ function checkAlt(input) {
     if (input === alt[i].toLowerCase()) {
       score++;
       displayAnswerMessage(true);
+      break;
     } else {
       displayAnswerMessage(false);
     }

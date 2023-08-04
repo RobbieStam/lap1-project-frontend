@@ -27,7 +27,6 @@ function displayCountry() {
 }
 
 function displayAnswerMessage(isCorrect) {
-  const answerMessage = document.querySelector('#response');
   answerMessage.style.visibility = 'visible';
   if (isCorrect) {
     answerMessage.textContent = `Correct answer!`;
@@ -110,6 +109,7 @@ async function postScore(e) {
 
 function startGame() {
   replayButton.style.visibility = "hidden";
+  answerMessage.style.visibility = "hidden";
   submitButton.removeAttribute("disabled");
   score = 0;
   displayScore();
@@ -125,6 +125,8 @@ function endGame() {
 
   replayButton.style.visibility = "visible";
 }
+
+const answerMessage = document.querySelector('#response');
 
 const form = document.querySelector('#country-guess');
 form.addEventListener('submit', checkAnswer);

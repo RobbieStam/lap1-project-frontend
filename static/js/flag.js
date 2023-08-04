@@ -10,6 +10,7 @@ alias = "";
 function startGame() {
   score = 0;
   replayButton.style.visibility = "hidden";
+  answerMessage.style.visibility = "hidden";
   submitButton.removeAttribute("disabled");
   getFlag();
   displayScore();
@@ -131,7 +132,6 @@ function checkAnswer(e) {
 }
 
 function displayAnswerMessage(isCorrect) {
-  const answerMessage = document.querySelector('#response');
   answerMessage.style.visibility = 'visible';
   if (isCorrect) {
     answerMessage.textContent = `Correct answer!`;
@@ -164,6 +164,8 @@ function checkShared() {
     }
   }
 }
+
+const answerMessage = document.querySelector('#response');
 const form = document.querySelector('#flag-guess');
 form.addEventListener('submit', checkAnswer);
 const dialog = document.getElementById("dialog");

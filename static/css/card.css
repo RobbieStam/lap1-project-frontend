@@ -109,6 +109,7 @@
     margin: 0;
     padding: 10px;
     width: 28vw;
+    max-width: 28vw;
 }
 
 /*changed class name from ranking*/
@@ -125,5 +126,6 @@
     font-size: 100%;
     padding: 20px 80px;
     border-radius: 0 0 10px 10px;
+    max-width: 28vw;
 }
 /*End of leaderboard*/

@@ -103,6 +103,7 @@ function checkAlt(input) {
     if (input === alt[i].toLowerCase()) {
       score++;
       displayAnswerMessage(true);
+      break;
     } else {
       displayAnswerMessage(false);
     }

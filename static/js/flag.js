@@ -20,7 +20,7 @@ async function getFlag() {
     try {
       const response = await fetch("https://capitals-quiz.onrender.com/countries/random")
       const data = await response.json();
-      currentCountry = data.name.toLowerCase();
+      currentCountry = data.name;
       flagIMG.src = data.flag;
       checkShared();
       if(data.alt) {
@@ -137,7 +137,7 @@ function displayAnswerMessage(isCorrect) {
     answerMessage.textContent = `Correct answer!`;
     answerMessage.style.color = 'green';
   } else {
-    answerMessage.textContent = `Incorrect, this is the flag of ${currentCountry}`;
+    answerMessage.textContent = `Incorrect, it was the flag of ${currentCountry}`;
     answerMessage.style.color = 'firebrick';
   }
 }

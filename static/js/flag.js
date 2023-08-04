@@ -26,6 +26,7 @@ async function getFlag() {
       checkShared();
       if(data.alt) {
         alt = data.alt;
+        console.log(alt);
       }
       // console.log(currentCountry);
       return data.flag;
@@ -126,6 +127,8 @@ function checkAnswer(e) {
   } else {
       displayAnswerMessage(false);
   }
+  alt = [];
+  alias = "";
   e.target.answer.value = '';
   displayScore();
   getFlag();

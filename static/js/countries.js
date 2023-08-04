@@ -9,12 +9,6 @@ function displayScore() {
   scoreText.textContent = `Score: ${score}`
 }
 
-// function getRandomCountry(countries) {
-//   const max = countries.length;
-//   const randIdx = Math.floor(Math.random() * max);
-//   return countries[randIdx];
-// }
-
 function fetchCountry(data) {
 
   const country = data;
@@ -82,7 +76,7 @@ function checkAnswer(e) {
 
 function displayTimer(timer, timerElement) {
   let minutes = Math.floor(timer / 60);
-  let seconds = Math.floor(timer % 60); //can maybe remove 10?
+  let seconds = Math.floor(timer % 60);
 
   if (minutes < 10) {
     minutes = `0${minutes}`;

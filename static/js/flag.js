@@ -18,7 +18,7 @@ function startGame() {
 // Retrieves a random country and its associated flag, and stores flag, name and alternate names as variables
 async function getFlag() {
     try {
-      const response = await fetch("https://staging-countries.onrender.com/countries/random")
+      const response = await fetch("https://capitals-quiz.onrender.com/countries/random")
       const data = await response.json();
       currentCountry = data.name.toLowerCase();
       flagIMG.src = data.flag;
@@ -47,7 +47,7 @@ async function postScore(e) {
     })
   }
 
-  const response = await fetch("https://staging-countries.onrender.com/flags_scores", options)
+  const response = await fetch("https://capitals-quiz.onrender.com/flags_scores", options)
   console.log(response)
   if (response.status === 201) {
     console.log(`201 true`)
